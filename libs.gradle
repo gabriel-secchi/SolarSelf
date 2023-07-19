@@ -1,0 +1,18 @@
+ext {
+    koin_version = "3.4.0"
+    koin_core = "io.insert-koin:koin-core:$koin_version"
+    koin_android = "io.insert-koin:koin-android:$koin_version"
+
+    retrofit_version = "2.9.0"
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
+    retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    okhttp_version = "4.9.1"
+    okhttp = "com.squareup.okhttp3:okhttp:$okhttp_version"
+
+    gson_version = "2.8.5"
+    gson = "com.google.code.gson:gson:$gson_version"
+
+    realm_version = "1.8.0"
+    realm  = "io.realm.kotlin:library-base:$realm_version"
+}

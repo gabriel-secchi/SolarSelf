@@ -1,0 +1,46 @@
+<resources>
+
+    <style name="Theme.SolarSelf.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <!-- Radius of the outer bound of widgets to make the rounded corners -->
+        <item name="appWidgetRadius">16dp</item>
+        <!--
+        Radius of the inner view's bound of widgets to make the rounded corners.
+        It needs to be 8dp or less than the value of appWidgetRadius
+        -->
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.SolarSelf.AppWidgetContainer" parent="Theme.SolarSelf.AppWidgetContainerParent">
+        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
+        <item name="appWidgetPadding">@dimen/sizetiny</item>
+    </style>
+    
+    <style name="linear_half_center">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="linear_half_center_horizontal" parent="linear_half_center">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="text_emphasis">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_emphasis_tiny" parent="text_emphasis">
+        <item name="android:textSize">@dimen/textSizeTiny</item>
+    </style>
+    <style name="text_emphasis_small" parent="text_emphasis">
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+    </style>
+    <style name="text_emphasis_standart" parent="text_emphasis">
+        <item name="android:textSize">@dimen/textSizeStandart</item>
+    </style>
+
+    <style name="text_small" parent="text_emphasis_small">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_secundary</item>
+    </style>
+
+    
+</resources>

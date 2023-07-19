@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_widget_description">Fique de olho na sua geração diária</string>
+    <string name="power_title">Potência</string>
+    <string name="day_energy_title">Geração</string>
+    <string name="hour">00:00</string>
+    <string name="zero">0</string>
+    <string name="dot_zero">.0</string>
+    <string name="kilowatt_hour">kWh</string>
+    <string name="watt">W</string>
+    <string name="dot">.</string>
+</resources>

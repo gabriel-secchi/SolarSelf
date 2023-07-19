@@ -1,0 +1,169 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget"
+    style="@style/Widget.SolarSelf.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.SolarSelf.AppWidgetContainer">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                style="@style/linear_half_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_battery_4_bar_24"
+                    android:tint="@color/text_primary"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/day_energy_title"
+                    style="@style/text_emphasis_tiny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/day_energy_title" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linear_half_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_bolt_24"
+                    android:tint="@color/text_primary"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/power_title"
+                    style="@style/text_emphasis_tiny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/power_title" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/linear_half_center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/day_energy_p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_emphasis_standart"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/day_energy_p2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_emphasis_small"
+                    android:text="@string/dot_zero" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_emphasis_small"
+                    android:layout_marginStart="@dimen/sizeMicro"
+                    android:text="@string/kilowatt_hour" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/linear_half_center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/power_p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_emphasis_standart"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:id="@+id/power_p2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_emphasis_small"
+                    android:text="@string/dot_zero" />
+
+                <TextView
+                    android:id="@+id/power_metric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_emphasis_small"
+                    android:layout_marginStart="@dimen/sizeMicro"
+                    android:text="@string/watt" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizetiny"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_last_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_small"
+                android:layout_marginEnd="@dimen/sizetiny"
+                android:text="@string/hour" />
+
+            <ImageView
+                android:id="@+id/btn_update"
+                android:layout_width="@dimen/sizeStandart"
+                android:layout_height="@dimen/sizeStandart"
+                android:scaleType="fitCenter"
+                android:src="@drawable/outline_refresh_24"
+                android:tint="@color/text_primary"
+                tools:ignore="UseAppTint" />
+
+            <ProgressBar
+                android:id="@+id/loading_icon"
+                android:layout_width="@dimen/sizeStandart"
+                android:layout_height="@dimen/sizeStandart"
+                android:indeterminateTint="@color/text_primary"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+ext {
+
+    defaultDependencies = [
+            [configuration: "implementation", dependency: "$koin_core"],
+            [configuration: "implementation", dependency: "$koin_android"]
+    ]
+
+    app = defaultDependencies
+    infrastructure = defaultDependencies
+    widget = defaultDependencies
+    
+    dataRemote = defaultDependencies + [
+            [configuration: "implementation", dependency: "$retrofit"],
+            [configuration: "implementation", dependency: "$retrofit_converter_gson"],
+            [configuration: "implementation", dependency: "$okhttp"]
+    ]
+
+    dataLocal = defaultDependencies + [
+            [configuration: "implementation", dependency: "$gson"],
+            [configuration: "implementation", dependency: "$realm"]
+    ]
+}

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="sizeNone">0dp</dimen>
+    <dimen name="sizeMicro">4dp</dimen>
+    <dimen name="sizetiny">8dp</dimen>
+    <dimen name="sizeSmall">16dp</dimen>
+    <dimen name="sizeStandart">24dp</dimen>
+</resources>
