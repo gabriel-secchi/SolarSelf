@@ -45,17 +45,14 @@ class SolarSelfWidget : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
         intent?.action?.let { action ->
             when (action) {
-                ACTION_CLICK_UPDATE_DATA,
-                AppWidgetManager.ACTION_APPWIDGET_UPDATE -> {
-                    setupWidget(context)
-                }
                 ACTION_OPEN_APP -> {
                     openApp(context)
                 }
                 else -> {
-                    super.onReceive(context, intent)
+                    setupWidget(context)
                 }
             }
         }
