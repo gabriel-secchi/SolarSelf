@@ -23,16 +23,24 @@
         android:name="com.gma.solarself.view.RegisterFragment"
         android:label="@string/register_fragment_label"
         tools:layout="@layout/fragment_register">
-
         <action
             android:id="@+id/action_Register_To_Data"
             app:destination="@id/FragmentData" />
     </fragment>
+
     <fragment
         android:id="@+id/FragmentData"
         android:name="com.gma.solarself.view.DataFragment"
         android:label="@string/data_fragment_label"
         tools:layout="@layout/fragment_data">
-
+        <action
+            android:id="@+id/action_Data_To_Config"
+            app:destination="@id/FragmentConfig" />
     </fragment>
+
+    <fragment
+        android:id="@+id/FragmentConfig"
+        android:name="com.gma.solarself.view.ConfigFragment"
+        android:label="@string/config_fragment_label"
+        tools:layout="@layout/fragment_config" />
 </navigation>

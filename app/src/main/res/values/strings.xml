@@ -5,6 +5,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="register_fragment_label">Dados da API</string>
     <string name="data_fragment_label">Dados da Estação</string>
+    <string name="config_fragment_label">Configuração</string>
     <string name="previous">Previous</string>
 
 

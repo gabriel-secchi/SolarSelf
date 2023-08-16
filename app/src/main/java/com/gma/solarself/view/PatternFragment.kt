@@ -40,7 +40,6 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
                     activity?.onBackPressed()
                 }
             }
-
         })
     }
 

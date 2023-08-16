@@ -2,11 +2,13 @@ package com.gma.solarself.di
 
 import com.gma.infrastructure.useCase.AppOpener
 import com.gma.solarself.MainActivity
+import com.gma.solarself.implementation.ConfigViewModelImpl
 import com.gma.solarself.implementation.DataAccessInputConfigUseCaseImpl
 import com.gma.solarself.implementation.RegisterViewModelImpl
 import com.gma.solarself.implementation.SolarDataViewModelImpl
 import com.gma.solarself.implementation.SolarSelfViewModelImpl
 import com.gma.solarself.useCase.DataAccessInputConfigUseCase
+import com.gma.solarself.viewModel.ConfigViewModel
 import com.gma.solarself.viewModel.RegisterViewModel
 import com.gma.solarself.viewModel.SolarDataViewModel
 import com.gma.solarself.viewModel.SolarSelfViewModel
@@ -34,6 +36,12 @@ val appModule = module {
 
     viewModel<SolarDataViewModel> {
         SolarDataViewModelImpl(
+            userStationDataUseCase = get()
+        )
+    }
+
+    viewModel<ConfigViewModel> {
+        ConfigViewModelImpl(
             userStationDataUseCase = get()
         )
     }

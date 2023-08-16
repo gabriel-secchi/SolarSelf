@@ -20,7 +20,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        android:id="@+id/teste_frags"
+        android:id="@+id/fragment_controller"
         layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
