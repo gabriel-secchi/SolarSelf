@@ -2,11 +2,17 @@ package com.gma.solarself.implementation
 
 import androidx.lifecycle.MutableLiveData
 import com.gma.infrastructure.useCase.UserStationDataUseCase
+import com.gma.solarself.useCase.ConfigToolbarUseCase
 import com.gma.solarself.viewModel.ConfigViewModel
 
 class ConfigViewModelImpl(
-    private val userStationDataUseCase: UserStationDataUseCase
+    private val userStationDataUseCase: UserStationDataUseCase,
+    private val configToolbarUseCase: ConfigToolbarUseCase,
 ) : ConfigViewModel() {
+    override fun hideToolbarConfigButton() {
+        configToolbarUseCase.displayConfigButton(isVisible = false)
+    }
+
     override val loading = MutableLiveData(false)
     /*override val stationData = MutableLiveData<UserStationModel?>()
 
@@ -20,4 +26,5 @@ class ConfigViewModelImpl(
             stationData.postValue(data)
         }
     }*/
+
 }

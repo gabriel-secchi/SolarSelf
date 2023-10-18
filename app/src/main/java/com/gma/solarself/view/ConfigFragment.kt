@@ -16,14 +16,15 @@ import com.gma.solarself.viewModel.ConfigViewModel
 class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
     FragmentConfigBinding::inflate,
     ConfigViewModel::class
-), MenuProvider {
+) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        //val menuHost: MenuHost = requireActivity()
+        //menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun setupViews() {
+        viewModel.hideToolbarConfigButton()
         //disableBackPressed()
     }
 
@@ -42,14 +43,14 @@ class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
         }*/
     }
 
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+    /*override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_main, menu)
      //  menu.removeItem(R.id.action_settings)
-    }
+    }*/
 
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+    /*override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return true
-    }
+    }*/
 
     /*private fun setupStationData(station: UserStationModel?) {
         binding.textviewSecond.text = station?.id ?: "no data"

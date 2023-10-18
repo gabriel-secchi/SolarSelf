@@ -8,4 +8,5 @@ abstract class SolarDataViewModel : ExtendViewModel, ViewModel() {
     abstract val stationData: LiveData<UserStationModel?>
 
     abstract fun fetchDataAccess()
+    abstract fun showToolbarConfigButton()
 }
