@@ -12,6 +12,7 @@ fun okHttpClientBuilder(
     interceptors: List<Interceptor>
 ): OkHttpClient {
     val clientBuilder = OkHttpClient.Builder()
+        .retryOnConnectionFailure(true)
         .readTimeout(TIME_OUT, TimeUnit.SECONDS)
         .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
 

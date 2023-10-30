@@ -10,6 +10,7 @@ import com.gma.data_remote.network.NetworkEngine
 import com.gma.data_remote.network.NetworkEngineImpl
 import com.gma.data_remote.network.buildApiService
 import com.gma.data_remote.network.interceptors.HeadersInterceptor
+import com.gma.data_remote.network.interceptors.RetryInterceptor
 import com.gma.data_remote.network.okHttpClientBuilder
 import com.google.gson.Gson
 import okhttp3.Interceptor
@@ -21,6 +22,7 @@ val dataRemoteModule = module {
     single { buildApiService(get()) }
     single { okHttpClientBuilder(getAll()) }
     single { HeadersInterceptor(get()) } bind Interceptor::class
+    single { RetryInterceptor() } bind Interceptor::class
 
     single<ApiDataEngine> {
         ApiDataEngineImpl()
