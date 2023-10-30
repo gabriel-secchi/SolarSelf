@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="toolbar">#222222</color>
 
     <color name="textColorPrimary">#cccccc</color>
-
     <color name="textColorPrimaryButton">#cccccc</color>
+    <color name="helperTextColor">@color/error</color>
 
     <color name="primary">#273c75</color>
     <color name="primaryInverse">#40739e</color>
+    <color name="primarySurface">#222222</color>
 
-    <color name="helperTextColor">#e74c3c</color>
+    <color name="snackbar_success">#006b24</color>
+    <color name="snackbar_error">#9c1f00</color>
+
 </resources>

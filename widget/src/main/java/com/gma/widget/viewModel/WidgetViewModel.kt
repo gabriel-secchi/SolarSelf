@@ -10,6 +10,7 @@ abstract class WidgetViewModel: ViewModel() {
     abstract val userStationData: LiveData<UserStationModel?>
     abstract val loading: LiveData<Boolean>
     var notConfigured: Boolean = false
+    var monitoredStationId: String? = null
 
     abstract fun fetchUserStationData()
 }

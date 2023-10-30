@@ -2,12 +2,18 @@
     <string name="app_name">Solar Self</string>
     <string name="action_settings">Settings</string>
 
-    <!-- Strings used for fragments for navigation -->
+    <!-- Fragments Title -->
     <string name="register_fragment_label">Dados da API</string>
     <string name="data_fragment_label">Dados da Estação</string>
     <string name="config_fragment_label">Configuração</string>
+
+    <!-- Actions -->
     <string name="previous">Previous</string>
 
+    <!-- Fields Validation -->
+    <string name="invalid_field">Campo inválido</string>
+    <string name="required_field">Campo obrigatório</string>
+    <string name="value_is_not_url">O campo deve ser uma URL</string>
 
     <!-- Register Screen -->
     <string name="api_url">Url da API</string>
@@ -15,7 +21,10 @@
     <string name="api_secret">Chave da API</string>
     <string name="enter">Entrar</string>
 
-    <string name="invalid_field">Campo inválido</string>
-    <string name="required_field">Campo obrigatório</string>
-    <string name="value_is_not_url">O campo deve ser uma URL</string>
+    <!-- Config Screen -->
+    <string name="config_screen_widget">Widget</string>
+    <string name="config_screen_monitored_station">Estação monitorada</string>
+    <string name="config_screen_widget_updated">Configuração do Widget salva</string>
+    <string name="config_screen_widget_error">Erro ao salvar a configuração do Widget</string>
+
 </resources>

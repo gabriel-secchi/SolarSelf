@@ -4,4 +4,6 @@
     <dimen name="sizeTiny">8dp</dimen>
     <dimen name="sizeSmall">16dp</dimen>
     <dimen name="sizeStandart">24dp</dimen>
+
+    <dimen name="roundedCircle">100dp</dimen>
 </resources>

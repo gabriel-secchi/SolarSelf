@@ -6,11 +6,15 @@
     <color name="toolbar">@color/white</color>
 
     <color name="textColorPrimary">@color/black</color>
-
     <color name="textColorPrimaryButton">@color/black</color>
+    <color name="error">#e74c3c</color>
+    <color name="helperTextColor">@color/error</color>
 
     <color name="primary">#f1c40f</color>
     <color name="primaryInverse">#40739e</color>
+    <color name="primarySurface">#f5f6fa</color>
 
-    <color name="helperTextColor">#e74c3c</color>
+    <color name="snackbar_success">#44bd32</color>
+    <color name="snackbar_error">@color/error</color>
+
 </resources>

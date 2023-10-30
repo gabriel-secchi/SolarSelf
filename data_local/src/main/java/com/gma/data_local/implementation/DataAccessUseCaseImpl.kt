@@ -5,14 +5,14 @@ import com.gma.data_local.model.DataAccess
 import com.gma.data_local.useCase.DataAccessUseCase
 
 class DataAccessUseCaseImpl(
-    private val customPreferences: ConfigApiDao
+    private val configApiDao: ConfigApiDao
 ): DataAccessUseCase {
     override suspend fun getDataAccess(): DataAccess? {
-        return customPreferences.getDataAccess()
+        return configApiDao.getDataAccess()
     }
 
     override suspend fun saveDataAccess(dataAccess: DataAccess) {
-        customPreferences.saveDataAccess(dataAccess)
+        configApiDao.saveDataAccess(dataAccess)
     }
 
 }

@@ -4,4 +4,5 @@ data class StationRecord(
     val id: String,
     val power: Float,
     val dayEnergy: Float,
+    val sno: String
 )

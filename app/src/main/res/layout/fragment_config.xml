@@ -4,44 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingVertical="@dimen/sizeTiny"
+    android:paddingHorizontal="@dimen/sizeSmall"
     tools:context=".view.ConfigFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/data_page"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/sizeTiny"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <TextView
+        android:id="@+id/title_card_config_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sizeTiny"
+        android:layout_marginTop="@dimen/sizeTiny"
+        android:text="@string/config_screen_widget"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="teste"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_config_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sizeMicro"
+        android:background="@drawable/rouded_surface_card"
+        android:paddingHorizontal="@dimen/sizeSmall"
+        android:paddingVertical="@dimen/sizeStandart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_card_config_widget">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/container"
+            android:id="@+id/container_st_list"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="teste"
-            app:startIconTint="@color/textColorPrimary"
+            android:hint="@string/config_screen_monitored_station"
             app:helperTextTextColor="@color/helperTextColor"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconTint="@color/textColorPrimary">
+
+            <AutoCompleteTextView
+                android:id="@+id/station_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btn_clr_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/primaryRoundedButton"
+            android:layout_marginTop="@dimen/sizeTiny"
+            android:layout_marginEnd="@dimen/sizeTiny"
+            android:src="@drawable/outline_close_24"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/container_st_list"
+            app:layout_constraintEnd_toEndOf="@+id/container_st_list"
+            app:layout_constraintTop_toTopOf="@+id/container_st_list"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/loading"
         layout="@layout/loading"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

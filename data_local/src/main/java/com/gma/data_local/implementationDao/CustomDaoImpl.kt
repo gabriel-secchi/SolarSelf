@@ -4,7 +4,6 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.query.RealmResults
 import io.realm.kotlin.query.TRUE_PREDICATE
 import io.realm.kotlin.types.RealmObject
-import org.mongodb.kbson.ObjectId
 import kotlin.reflect.KClass
 
 abstract class CustomDaoImpl<T : RealmObject>(
@@ -18,7 +17,13 @@ abstract class CustomDaoImpl<T : RealmObject>(
         }
     }
 
-    private fun _find(
+    protected fun update(_object: T, writeUpdateObject: (T) -> Unit) {
+        database.writeBlocking {
+            writeUpdateObject(_object)
+        }
+    }
+
+    private fun customFind(
         key: String? = null,
         comparation: String? = null,
         value: String? = null
@@ -33,18 +38,9 @@ abstract class CustomDaoImpl<T : RealmObject>(
         ).find()
     }
 
-    protected fun findById(id: ObjectId): T? {
-        return try {
-            val objectToEdit: RealmResults<T> = _find(ID, EQUALS, id.toString())
-            objectToEdit.first()
-        } catch (ex: Exception) {
-            null
-        }
-    }
-
     protected fun find(key: String, value: String): List<T>? {
         return try {
-            val objectToEdit: RealmResults<T> = _find(key, EQUALS, value)
+            val objectToEdit: RealmResults<T> = customFind(key, EQUALS, value)
             objectToEdit.map {
                 it
             }
@@ -55,15 +51,22 @@ abstract class CustomDaoImpl<T : RealmObject>(
 
     protected fun findFirst(): T? {
         return try {
-            val objectToEdit: RealmResults<T> = _find()
+            val objectToEdit: RealmResults<T> = customFind()
             objectToEdit.first()
         } catch (ex: Exception) {
             null
         }
     }
 
-    private companion object {
-        const val EQUALS = "=="
-        const val ID = "_id"
+    protected fun delete(_object: T) {
+        database.writeBlocking {
+            findLatest(_object)?.also {
+                delete(it)
+            }
+        }
+    }
+
+    companion object {
+        private const val EQUALS = "=="
     }
 }

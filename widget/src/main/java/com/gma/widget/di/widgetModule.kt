@@ -10,7 +10,8 @@ val widgetModule = module {
     viewModel<WidgetViewModel> {
         WidgetViewModelImpl(
             apiDataAccessUseCase = get(),
-            userStationDataUseCase = get()
+            userStationDataUseCase = get(),
+            widgetConfigUseCase = get()
         )
     }
 

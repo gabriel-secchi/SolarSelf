@@ -5,9 +5,11 @@ import com.gma.infrastructure.di.SaveRemoteApiDataAccess
 import com.gma.infrastructure.implementation.ApiAccessValidationUseCaseimpl
 import com.gma.infrastructure.implementation.ApiDataAccessUseCaseImpl
 import com.gma.infrastructure.implementation.UserStationDataUseCaseImpl
+import com.gma.infrastructure.implementation.WidgetConfigUseCaseImpl
 import com.gma.infrastructure.useCase.ApiAccessValidationUseCase
 import com.gma.infrastructure.useCase.ApiDataAccessUseCase
 import com.gma.infrastructure.useCase.UserStationDataUseCase
+import com.gma.infrastructure.useCase.WidgetConfigUseCase
 import org.koin.dsl.module
 
 val infrastructureModule = module {
@@ -38,6 +40,12 @@ val infrastructureModule = module {
     factory<UserStationDataUseCase> {
         UserStationDataUseCaseImpl(
             userStationDataSource = get()
+        )
+    }
+
+    factory<WidgetConfigUseCase> {
+        WidgetConfigUseCaseImpl(
+            configWidgetDao = get()
         )
     }
 }

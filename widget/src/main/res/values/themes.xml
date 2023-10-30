@@ -12,7 +12,7 @@
 
     <style name="Theme.SolarSelf.AppWidgetContainer" parent="Theme.SolarSelf.AppWidgetContainerParent">
         <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
-        <item name="appWidgetPadding">@dimen/sizetiny</item>
+        <item name="appWidgetPadding">@dimen/sizeTiny</item>
     </style>
     
     <style name="linear_half_center">

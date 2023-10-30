@@ -1,60 +1,103 @@
 package com.gma.solarself.view
 
-import android.annotation.SuppressLint
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
-import androidx.lifecycle.Lifecycle
+import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
+import com.gma.infrastructure.model.StationDataPage
+import com.gma.infrastructure.model.WidgetConfig
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentConfigBinding
+import com.gma.solarself.view.components.CustomSnackBar
 import com.gma.solarself.viewModel.ConfigViewModel
 
 class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
     FragmentConfigBinding::inflate,
     ConfigViewModel::class
 ) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //val menuHost: MenuHost = requireActivity()
-        //menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    private var lastSelectionStation: String? = null
+
+    private val adapterStationList: ArrayAdapter<String> by lazy {
+        ArrayAdapter(
+            requireContext(),
+            R.layout.adapter_item_station_list,
+            mutableListOf<String>()
+        )
     }
 
     override fun setupViews() {
         viewModel.hideToolbarConfigButton()
-        //disableBackPressed()
+        setupWidgetConfigStationList()
+        setupWidgetConfigUnselectStation()
+    }
+
+    private fun setupWidgetConfigStationList() {
+        binding.stationList.apply {
+            setAdapter(adapterStationList)
+            setOnDismissListener {
+                clearFocus()
+            }
+            setOnItemClickListener { _, _, i, _ ->
+                val selectedStation = adapterStationList.getItem(i).toString()
+                viewModel.saveWidgetConfig(selectedStation)
+            }
+        }
+    }
+
+    private fun setupWidgetConfigUnselectStation() {
+        binding.btnClrSelection.setOnClickListener {
+            viewModel.deleteWidgetConfig()
+            binding.stationList.text = null
+        }
     }
 
     override fun setupObservers() {
         viewModel.loading.observe(requireActivity(), ::displayLoading)
-        //viewModel.stationData.observe(requireActivity(), ::setupStationData)
+        viewModel.stationList.observe(requireActivity(), ::setupStationList)
+        viewModel.widgetConfig.observe(requireActivity(), ::setupWidgetConfig)
+        viewModel.widgedConfigUpdated.observe(requireActivity()) {
+            CustomSnackBar
+                .make(view, R.string.config_screen_widget_updated)
+                .setSuccessStyle(requireActivity())
+                .show()
+            lastSelectionStation = binding.stationList.text.toString()
+            setLastSelectedStation()
+        }
+        viewModel.error.observe(requireActivity()) { errorMessage ->
+            CustomSnackBar
+                .make(view, errorMessage)
+                .setErrorStyle(requireActivity())
+                .show()
+            setLastSelectedStation()
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        /*(activity as AppCompatActivity).supportActionBar?.apply {
-            show()
-            setHomeButtonEnabled(false) // disable the button
-            setDisplayHomeAsUpEnabled(false) // remove the left caret
-            setDisplayShowHomeEnabled(false) // remove the icon
-        }*/
+    private fun setupWidgetConfig(widgetConfig: WidgetConfig?) {
+        lastSelectionStation = widgetConfig?.monitoredStationId
+        setLastSelectedStation()
     }
 
-    /*override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.menu_main, menu)
-     //  menu.removeItem(R.id.action_settings)
-    }*/
+    private fun getAdapterItemValue(selectedId: String): String? {
+        val adapterPosition = adapterStationList.getPosition(selectedId)
+        if(adapterPosition < 0)
+            return null
 
-    /*override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return true
-    }*/
+        return adapterStationList.getItem(adapterPosition)
+    }
 
-    /*private fun setupStationData(station: UserStationModel?) {
-        binding.textviewSecond.text = station?.id ?: "no data"
-        binding.tvPower.text = "${station?.power} W"
-        binding.tvEnergy.text = "${station?.dayEnergy} KWh"
-    }*/
+    private fun setupStationList(stationList: List<StationDataPage>) {
+        adapterStationList.clear()
+        adapterStationList.addAll(
+            stationList.map { it.id }
+        )
+    }
+
+    private fun setLastSelectedStation() {
+        if(lastSelectionStation.isNullOrBlank()) {
+            binding.stationList.text = null
+            binding.btnClrSelection.isVisible = false
+        }
+        else {
+            binding.stationList.setText(getAdapterItemValue(lastSelectionStation!!))
+            binding.btnClrSelection.isVisible = true
+        }
+    }
 }

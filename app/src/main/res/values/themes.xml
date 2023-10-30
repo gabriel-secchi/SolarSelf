@@ -11,6 +11,12 @@
         <item name="android:textColor">@color/textColorPrimaryButton</item>
     </style>
 
+    <style name="primaryRoundedButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/background_circle</item>
+        <item name="android:backgroundTint">@color/primaryInverse</item>
+        <item name="android:padding">@dimen/sizeMicro</item>
+    </style>
+
     <style name="actionBar">
         <item name="android:background">@color/toolbar</item>
         <item name="android:elevation">@dimen/sizeMicro</item>
@@ -20,7 +26,7 @@
     <style name="iconButtonToolbar" parent="Widget.AppCompat.ImageButton">
         <item name="android:tint">@color/textColorPrimaryButton</item>
         <item name="android:layout_margin">@dimen/sizeTiny</item>
-        <item name="android:padding">@dimen/sizetiny</item>
+        <item name="android:padding">@dimen/sizeTiny</item>
         <item name="android:background">@null</item>
         <item name="android:layout_gravity">end</item>
     </style>

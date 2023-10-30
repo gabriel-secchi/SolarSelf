@@ -47,7 +47,8 @@ val appModule = module {
     viewModel<ConfigViewModel> {
         ConfigViewModelImpl(
             userStationDataUseCase = get(),
-            configToolbarUseCase = get()
+            configToolbarUseCase = get(),
+            widgetConfigUseCase = get()
         )
     }
 
