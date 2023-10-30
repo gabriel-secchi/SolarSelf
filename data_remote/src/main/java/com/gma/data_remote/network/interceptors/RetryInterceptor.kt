@@ -12,8 +12,7 @@ internal class RetryInterceptor: Interceptor {
         while (!response.isSuccessful && tryCount < MAX_RETRIES) {
             tryCount++
 
-            val backoff = (Math.pow(2.0, tryCount.toDouble()) * 1000 ).toLong()
-            Thread.sleep(backoff)
+            Thread.sleep(TIME_SLEEP_RETRIE)
             request = request.newBuilder().build()
             response = chain.proceed(request)
         }
@@ -22,6 +21,7 @@ internal class RetryInterceptor: Interceptor {
     }
 
     private companion object {
+        const val TIME_SLEEP_RETRIE = 1000L
         const val MAX_RETRIES = 5
     }
 }

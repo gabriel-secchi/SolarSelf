@@ -30,7 +30,6 @@ fun buildApiService(
     return Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
-        //.baseUrl("https://httpbin.org/")
         .baseUrl("https://none.na/")
         .build()
         .create(ApiService::class.java)
