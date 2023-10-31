@@ -4,9 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.model.UserStationModel
 import com.gma.infrastructure.useCase.UserStationDataUseCase
-import com.gma.solarself.useCase.ConfigToolbarUseCase
 import com.gma.solarself.viewModel.RealTimeChargeViewModel
-import com.gma.solarself.viewModel.SolarDataViewModel
 import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask

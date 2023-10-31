@@ -1,11 +1,9 @@
 package com.gma.solarself.view
 
-import com.gma.solarself.databinding.FragmentDataSummaryBinding
 import com.gma.solarself.databinding.FragmentMonthlyChargeCardBinding
 import com.gma.solarself.model.MonthlyChargeModel
 import com.gma.solarself.utils.twoDecimalPlaces
 import com.gma.solarself.viewModel.MonthlyChargeViewModel
-import com.gma.solarself.viewModel.SummaryDataViewModel
 
 class MonthlyChargeCardFragment(
     val stationId: String
@@ -19,7 +17,7 @@ class MonthlyChargeCardFragment(
 
     override fun setupObservers() {
         viewModel.referenceMonth.observe(requireActivity()) {
-            binding.tvReference.text  = "$it"
+            binding.tvReference.text = it
         }
         viewModel.monthlySummary.observe(requireActivity(), ::setupMonthlySummary)
     }
