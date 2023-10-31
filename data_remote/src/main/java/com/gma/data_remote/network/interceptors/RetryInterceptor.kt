@@ -14,6 +14,7 @@ internal class RetryInterceptor: Interceptor {
 
             Thread.sleep(TIME_SLEEP_RETRIE)
             request = request.newBuilder().build()
+            response.close()
             response = chain.proceed(request)
         }
 
