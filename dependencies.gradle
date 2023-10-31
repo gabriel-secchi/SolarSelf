@@ -5,7 +5,9 @@ ext {
             [configuration: "implementation", dependency: "$koin_android"]
     ]
 
-    app = defaultDependencies
+    app = defaultDependencies + [
+            [configuration: "implementation", dependency: "$facebook_shimmer"],
+    ]
     infrastructure = defaultDependencies
     widget = defaultDependencies
     

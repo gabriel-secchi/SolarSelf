@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Solar Self</string>
     <string name="action_settings">Settings</string>
+    <string name="value_none">---</string>
 
     <!-- Fragments Title -->
     <string name="register_fragment_label">Dados da API</string>
@@ -26,5 +27,15 @@
     <string name="config_screen_monitored_station">Estação monitorada</string>
     <string name="config_screen_widget_updated">Configuração do Widget salva</string>
     <string name="config_screen_widget_error">Erro ao salvar a configuração do Widget</string>
+
+    <!-- Monthly charge card -->
+    <string name="monthly_charge">Carga mensal</string>
+    <string name="monthly_charge_total">Total:</string>
+    <string name="monthly_charge_average">Média:</string>
+
+    <!-- Realtime charge card -->
+    <string name="real_time_charge_title">Carga atual</string>
+    <string name="real_time_charge">Carga:</string>
+    <string name="real_time_charge_power">Potência:</string>
 
 </resources>

@@ -34,7 +34,7 @@
         <item name="android:textSize">@dimen/textSizeSmall</item>
     </style>
     <style name="text_emphasis_standart" parent="text_emphasis">
-        <item name="android:textSize">@dimen/textSizeStandart</item>
+        <item name="android:textSize">@dimen/textSizeBig</item>
     </style>
 
     <style name="text_small" parent="text_emphasis_small">

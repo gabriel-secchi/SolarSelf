@@ -67,10 +67,10 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
         setupObservers()
     }
 
-    override fun onDestroyView() {
+    /*override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    }*/
 
     private fun <T : ViewModel> getViewModel(
         clazz: KClass<T>,

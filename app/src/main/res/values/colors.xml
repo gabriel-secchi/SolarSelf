@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="toolbar">@color/white</color>
+    <color name="shimmer_effect">#FFDDDDDD</color>
 
     <color name="textColorPrimary">@color/black</color>
     <color name="textColorPrimaryButton">@color/black</color>

@@ -16,7 +16,7 @@ class SolarDataViewModelImpl(
     override val stationData = MutableLiveData<UserStationModel?>()
 
     init {
-        fetchDataAccess()
+        //fetchDataAccess()
     }
 
     override fun fetchDataAccess() {

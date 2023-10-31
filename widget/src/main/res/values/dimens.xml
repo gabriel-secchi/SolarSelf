@@ -8,5 +8,6 @@
 
     <dimen name="textSizeTiny">10sp</dimen>
     <dimen name="textSizeSmall">12sp</dimen>
-    <dimen name="textSizeStandart">20sp</dimen>
+    <dimen name="textSizeStandart">16sp</dimen>
+    <dimen name="textSizeBig">20sp</dimen>
 </resources>

@@ -1,6 +1,8 @@
 package com.gma.solarself.view
 
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.gma.infrastructure.model.UserStationModel
 import com.gma.solarself.databinding.FragmentDataBinding
@@ -11,12 +13,19 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     SolarDataViewModel::class
 ) {
     override fun setupViews() {
+        setupChildFragmentManager()
         disableBackPressed()
     }
 
     override fun setupObservers() {
         viewModel.loading.observe(requireActivity(), ::displayLoading)
         viewModel.stationData.observe(requireActivity(), ::setupStationData)
+    }
+
+    private fun setupChildFragmentManager() {
+        childFragmentManager.beginTransaction()
+            .replace(binding.stationSummaryList.id, DataSummaryFragment())
+            .commit()
     }
 
     override fun onResume() {
@@ -33,8 +42,8 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     private fun setupStationData(station: UserStationModel?) {
         try {
             binding.textviewSecond.text = station?.id ?: "no data"
-            binding.tvPower.text = "${station?.power} W"
-            binding.tvEnergy.text = "${station?.dayEnergy} KWh"
+            binding.tvPower.text = station?.power.toString().plus(" W")
+            binding.tvEnergy.text = station?.dayEnergy.toString().plus(" KWh")
         } catch (ex: Exception) {
             val message = ex.message
             Log.e("setupDataStation", message, ex)

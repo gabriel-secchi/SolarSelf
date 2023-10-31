@@ -15,4 +15,7 @@ ext {
 
     realm_version = "1.8.0"
     realm  = "io.realm.kotlin:library-base:$realm_version"
+
+    facebook_shimmer_version = "0.5.0"
+    facebook_shimmer = "com.facebook.shimmer:shimmer:$facebook_shimmer_version"
 }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:shimmer_highlight_color="@color/shimmer_effect"
+    tools:context=".view.RealTimeChargeCardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rouded_surface_card"
+        android:padding="@dimen/sizeSmall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/card_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/real_time_charge_title"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/textSizeStandart"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="@dimen/sizeNone"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizeMicro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_title" />
+
+        <LinearLayout
+            android:id="@+id/panel_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizeTiny"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/real_time_charge"
+                android:textColor="@color/textColorPrimary"/>
+
+            <TextView
+                android:id="@+id/tv_charge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_none"
+                android:layout_marginStart="@dimen/sizeTiny"
+                android:textColor="@color/textColorPrimary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/panel_average"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizeTiny"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/panel_total"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/real_time_charge_power"
+                android:textColor="@color/textColorPrimary"/>
+
+            <TextView
+                android:id="@+id/tv_power"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/value_none"
+                android:layout_marginStart="@dimen/sizeTiny"
+                android:textColor="@color/textColorPrimary"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

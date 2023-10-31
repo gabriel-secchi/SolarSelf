@@ -1,7 +1,9 @@
 package com.gma.data_remote.di
 
+import com.gma.data_remote.dataSource.StationMonthDataSource
 import com.gma.data_remote.dataSource.UserStationDataSource
 import com.gma.data_remote.dataSource.ValidateConnectionDataSource
+import com.gma.data_remote.dataSourceImplementation.StationMonthDataSourceImpl
 import com.gma.data_remote.dataSourceImplementation.UserStationDataSourceImpl
 import com.gma.data_remote.dataSourceImplementation.ValidateConnectionDataSourceImpl
 import com.gma.data_remote.network.ApiDataEngine
@@ -49,4 +51,9 @@ val dataRemoteModule = module {
         )
     }
 
+    factory<StationMonthDataSource> {
+        StationMonthDataSourceImpl(
+            networkEngine = get()
+        )
+    }
 }
