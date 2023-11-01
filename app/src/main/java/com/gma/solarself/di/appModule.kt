@@ -3,6 +3,7 @@ package com.gma.solarself.di
 import com.gma.infrastructure.useCase.AppOpener
 import com.gma.solarself.MainActivity
 import com.gma.solarself.implementation.ConfigViewModelImpl
+import com.gma.solarself.implementation.ConfigWidgetCardViewModelImpl
 import com.gma.solarself.implementation.DataAccessInputConfigUseCaseImpl
 import com.gma.solarself.implementation.MonthlyChargeViewModelImpl
 import com.gma.solarself.implementation.RealTimeChargeViewModelImpl
@@ -13,6 +14,7 @@ import com.gma.solarself.implementation.SummaryDataViewModelImpl
 import com.gma.solarself.useCase.ConfigToolbarUseCase
 import com.gma.solarself.useCase.DataAccessInputConfigUseCase
 import com.gma.solarself.viewModel.ConfigViewModel
+import com.gma.solarself.viewModel.ConfigWidgetCardViewModel
 import com.gma.solarself.viewModel.MonthlyChargeViewModel
 import com.gma.solarself.viewModel.RealTimeChargeViewModel
 import com.gma.solarself.viewModel.RegisterViewModel
@@ -68,8 +70,13 @@ val appModule = module {
 
     viewModel<ConfigViewModel> {
         ConfigViewModelImpl(
+            configToolbarUseCase = get()
+        )
+    }
+
+    viewModel<ConfigWidgetCardViewModel> {
+        ConfigWidgetCardViewModelImpl(
             userStationDataUseCase = get(),
-            configToolbarUseCase = get(),
             widgetConfigUseCase = get()
         )
     }

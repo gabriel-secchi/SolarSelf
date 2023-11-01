@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:shimmer_highlight_color="@color/shimmer_effect"
+    tools:context=".view.ConfigWidgetCardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_card_config_widget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/sizeTiny"
+            android:layout_marginTop="@dimen/sizeTiny"
+            android:text="@string/config_screen_widget"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_config_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizeMicro"
+            android:background="@drawable/rouded_surface_card"
+            android:paddingHorizontal="@dimen/sizeSmall"
+            android:paddingVertical="@dimen/sizeStandart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_card_config_widget">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/container_st_list"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/config_screen_monitored_station"
+                app:helperTextTextColor="@color/helperTextColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconTint="@color/textColorPrimary">
+
+                <AutoCompleteTextView
+                    android:id="@+id/station_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/btn_clr_selection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/primaryRoundedButton"
+                android:layout_marginTop="@dimen/sizeTiny"
+                android:layout_marginEnd="@dimen/sizeTiny"
+                android:src="@drawable/outline_close_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/container_st_list"
+                app:layout_constraintEnd_toEndOf="@+id/container_st_list"
+                app:layout_constraintTop_toTopOf="@+id/container_st_list"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>
