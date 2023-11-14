@@ -1,4 +1,4 @@
-package com.gma.solarself.view
+package com.gma.solarself.view.config
 
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
@@ -6,6 +6,7 @@ import com.gma.infrastructure.model.StationDataPage
 import com.gma.infrastructure.model.WidgetConfig
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentConfigWidgetCardBinding
+import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.view.components.CustomSnackBar
 import com.gma.solarself.viewModel.ConfigWidgetCardViewModel
 
@@ -56,7 +57,7 @@ class ConfigWidgetCardFragment :
         viewModel.widgedConfigUpdated.observe(requireActivity()) {
             CustomSnackBar
                 .make(view, R.string.config_screen_widget_updated)
-                .setSuccessStyle(requireActivity())
+                .setSuccessStyle()
                 .show()
             lastSelectionStation = binding.stationList.text.toString()
             setLastSelectedStation()
@@ -64,7 +65,7 @@ class ConfigWidgetCardFragment :
         viewModel.error.observe(requireActivity()) { errorMessage ->
             CustomSnackBar
                 .make(view, errorMessage)
-                .setErrorStyle(requireActivity())
+                .setErrorStyle()
                 .show()
             setLastSelectedStation()
         }

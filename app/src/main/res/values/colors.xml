@@ -17,5 +17,6 @@
 
     <color name="snackbar_success">#44bd32</color>
     <color name="snackbar_error">@color/error</color>
+    <color name="snackbar_warning">#f1c40f</color>
 
 </resources>

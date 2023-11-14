@@ -1,6 +1,7 @@
 package com.gma.solarself.application
 
 import android.app.Application
+import android.content.Context
 import com.gma.data_local.di.infrastructureModule
 import com.gma.solarself.di.appModule
 import com.gma.widget.di.widgetModule
@@ -10,7 +11,7 @@ import org.koin.core.context.startKoin
 class SolarSelfApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-
+        appContext = applicationContext
         startKoin {
             androidContext(this@SolarSelfApplication)
             modules(
@@ -19,5 +20,9 @@ class SolarSelfApplication : Application() {
                 widgetModule
             )
         }
+    }
+
+    companion object {
+        lateinit var appContext: Context
     }
 }

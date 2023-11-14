@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/FragmentData"
-        android:name="com.gma.solarself.view.DataFragment"
+        android:name="com.gma.solarself.view.data.DataFragment"
         android:label="@string/data_fragment_label"
         tools:layout="@layout/fragment_data">
         <action
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/FragmentConfig"
-        android:name="com.gma.solarself.view.ConfigFragment"
+        android:name="com.gma.solarself.view.config.ConfigFragment"
         android:label="@string/config_fragment_label"
         tools:layout="@layout/fragment_config" />
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:shimmer_highlight_color="@color/shimmer_effect"
-    tools:context=".view.MonthlyChargeCardFragment">
+    tools:context=".view.data.summary.MonthlyChargeCardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_panel"

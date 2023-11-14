@@ -1,17 +1,11 @@
-package com.gma.solarself.view
+package com.gma.solarself.view.data.summary
 
-import android.util.Log
 import com.gma.infrastructure.model.UserStationModel
-import com.gma.solarself.databinding.FragmentDataSummaryBinding
-import com.gma.solarself.databinding.FragmentMonthlyChargeCardBinding
 import com.gma.solarself.databinding.FragmentRealTimeChargeCardBinding
-import com.gma.solarself.model.MonthlyChargeModel
-import com.gma.solarself.utils.twoDecimalPlaces
-import com.gma.solarself.viewModel.MonthlyChargeViewModel
+import com.gma.solarself.utils.toEnergyCharge
+import com.gma.solarself.utils.toPowerCharge
+import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.viewModel.RealTimeChargeViewModel
-import com.gma.solarself.viewModel.SummaryDataViewModel
-import java.util.Timer
-import java.util.TimerTask
 
 class RealTimeChargeCardFragment(
     val stationId: String
@@ -34,7 +28,7 @@ class RealTimeChargeCardFragment(
     }
 
     override fun setupObservers() {
-        viewModel.stationData.observe(requireActivity(), ::setupMonthlySummary)
+        viewModel.stationData.observe(requireActivity(), ::fetchStationData)
         viewModel.loading.observe(requireActivity()) { isVisible ->
             if (isVisible) {
                 binding.root.showShimmer(true)
@@ -46,10 +40,10 @@ class RealTimeChargeCardFragment(
         }
     }
 
-    private fun setupMonthlySummary(userStationModel: UserStationModel?) {
+    private fun fetchStationData(userStationModel: UserStationModel?) {
         userStationModel?.let {
-            binding.tvCharge.text = it.dayEnergy.toString().plus(" KWh")
-            binding.tvPower.text = it.power.toString().plus(" W")
+            binding.tvCharge.text = it.dayEnergy.toEnergyCharge()
+            binding.tvPower.text = it.power.toPowerCharge()
         }
     }
 }

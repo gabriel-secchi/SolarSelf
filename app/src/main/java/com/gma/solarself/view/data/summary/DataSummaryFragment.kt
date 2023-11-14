@@ -1,6 +1,7 @@
-package com.gma.solarself.view
+package com.gma.solarself.view.data.summary
 
 import com.gma.solarself.databinding.FragmentDataSummaryBinding
+import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.viewModel.SummaryDataViewModel
 
 class DataSummaryFragment : PatternFragment<FragmentDataSummaryBinding, SummaryDataViewModel>(

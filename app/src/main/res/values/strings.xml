@@ -28,6 +28,9 @@
     <string name="config_screen_widget_updated">Configuração do Widget salva</string>
     <string name="config_screen_widget_error">Erro ao salvar a configuração do Widget</string>
 
+    <!-- Data Screen -->
+    <string name="data_screen_close_app">Pressione novamente para fechar o app</string>
+
     <!-- Monthly charge card -->
     <string name="monthly_charge">Carga mensal</string>
     <string name="monthly_charge_total">Total:</string>

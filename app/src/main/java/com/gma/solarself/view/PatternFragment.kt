@@ -23,6 +23,7 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
 ) :
     Fragment() {
     private var cancelBackPressed = false
+    private var backPressedCallback: (() -> Unit)? = null
 
     private var _binding: VB? = null
     protected val binding get() = _binding!!
@@ -36,8 +37,12 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (!cancelBackPressed) {
-                    isEnabled = false
-                    activity?.onBackPressed()
+                    backPressedCallback?.let {
+                        it()
+                    } ?: run {
+                        isEnabled = false
+                        activity?.onBackPressedDispatcher?.onBackPressed()
+                    }
                 }
             }
         })
@@ -67,11 +72,6 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
         setupObservers()
     }
 
-    /*override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }*/
-
     private fun <T : ViewModel> getViewModel(
         clazz: KClass<T>,
         qualifier: Qualifier? = null,
@@ -84,7 +84,11 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
         cancelBackPressed = true
     }
 
+    protected fun setBackPressedCallback(callback: () -> Unit) {
+        backPressedCallback = callback
+    }
+
     private fun getAppCompatActivity() = activity as AppCompatActivity
-    protected fun getActionBar() = getAppCompatActivity().supportActionBar
+    private fun getActionBar() = getAppCompatActivity().supportActionBar
     protected fun hideActionBar() = getActionBar()?.hide()
 }

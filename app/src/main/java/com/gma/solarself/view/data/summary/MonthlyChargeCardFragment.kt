@@ -1,8 +1,9 @@
-package com.gma.solarself.view
+package com.gma.solarself.view.data.summary
 
 import com.gma.solarself.databinding.FragmentMonthlyChargeCardBinding
 import com.gma.solarself.model.MonthlyChargeModel
 import com.gma.solarself.utils.twoDecimalPlaces
+import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.viewModel.MonthlyChargeViewModel
 
 class MonthlyChargeCardFragment(

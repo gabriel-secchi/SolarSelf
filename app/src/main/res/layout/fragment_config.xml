@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingVertical="@dimen/sizeTiny"
     android:paddingHorizontal="@dimen/sizeSmall"
-    tools:context=".view.ConfigFragment">
+    tools:context=".view.config.ConfigFragment">
 
     <FrameLayout
         android:id="@+id/config_widget_card"

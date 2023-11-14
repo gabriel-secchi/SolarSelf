@@ -1,11 +1,15 @@
-package com.gma.solarself.view
+package com.gma.solarself.view.data
 
-import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.gma.infrastructure.model.UserStationModel
+import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentDataBinding
+import com.gma.solarself.view.PatternFragment
+import com.gma.solarself.view.components.CustomSnackBar
+import com.gma.solarself.view.data.summary.DataSummaryFragment
 import com.gma.solarself.viewModel.SolarDataViewModel
 
 class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
@@ -14,7 +18,7 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
 ) {
     override fun setupViews() {
         setupChildFragmentManager()
-        disableBackPressed()
+        setupBackPressedButton()
     }
 
     override fun setupObservers() {
@@ -26,6 +30,20 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
         childFragmentManager.beginTransaction()
             .replace(binding.stationSummaryList.id, DataSummaryFragment())
             .commit()
+    }
+
+    private fun setupBackPressedButton() {
+        setBackPressedCallback {
+            CustomSnackBar
+                .make(view, R.string.data_screen_close_app)
+                .show()
+            setBackPressedCallback {
+                requireActivity().finish()
+            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                setupBackPressedButton()
+            }, BACK_PRESSED_RESET_TIMEOUT)
+        }
     }
 
     override fun onResume() {
@@ -49,5 +67,9 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
             Log.e("setupDataStation", message, ex)
             ex.printStackTrace()
         }
+    }
+
+    private companion object {
+        const val BACK_PRESSED_RESET_TIMEOUT = 5000L
     }
 }

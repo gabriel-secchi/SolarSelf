@@ -1,6 +1,7 @@
-package com.gma.solarself.view
+package com.gma.solarself.view.config
 
 import com.gma.solarself.databinding.FragmentConfigBinding
+import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.viewModel.ConfigViewModel
 
 class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
