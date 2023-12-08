@@ -4,6 +4,6 @@ import com.gma.infrastructure.model.WidgetConfig
 
 interface WidgetConfigUseCase {
     suspend fun getConfig(): WidgetConfig?
-    suspend fun saveConfig(widgetConfig: WidgetConfig): Boolean
+    suspend fun saveConfig(monitoredStationId: String): Boolean
     suspend fun deleteConfig(): Boolean
 }

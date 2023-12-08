@@ -5,8 +5,6 @@ import com.gma.data_local.model.WidgetConfig as WidgetConfigDaoModel
 
 fun WidgetConfigDaoModel.toWidgetConfigModel() =
     WidgetConfig(
-        monitoredStationId = this.monitoredStationId,
-        backgroundColor = this.backgroundColor,
-        textColor = this.textColor
+        monitoredStationId = this.monitoredStationId
     )
 

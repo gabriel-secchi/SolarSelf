@@ -14,12 +14,12 @@ import com.gma.infrastructure.useCase.AppOpener
 import com.gma.widget.viewModel.WidgetViewModel
 import org.koin.core.parameter.ParametersDefinition
 import org.koin.core.qualifier.Qualifier
+import org.koin.java.KoinJavaComponent.get
 import org.koin.java.KoinJavaComponent.getKoin
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import kotlin.reflect.KClass
-import org.koin.java.KoinJavaComponent.get
 
 class SolarSelfWidget : AppWidgetProvider() {
     private val viewModel: WidgetViewModel = getViewModel(getViewModelKclass())
@@ -51,6 +51,7 @@ class SolarSelfWidget : AppWidgetProvider() {
                 ACTION_OPEN_APP -> {
                     openApp(context)
                 }
+
                 else -> {
                     setupWidget(context)
                 }
@@ -195,13 +196,10 @@ class SolarSelfWidget : AppWidgetProvider() {
     ): PendingIntent? {
         Intent(context, javaClass).apply {
             action = intentAction
-
-            val pendinIntent = PendingIntent.getBroadcast(
+            return PendingIntent.getBroadcast(
                 context, 0, this,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
-
-            return pendinIntent
         }
     }
 

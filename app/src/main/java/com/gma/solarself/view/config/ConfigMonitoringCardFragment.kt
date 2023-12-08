@@ -3,17 +3,16 @@ package com.gma.solarself.view.config
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import com.gma.infrastructure.model.StationDataPage
-import com.gma.infrastructure.model.WidgetConfig
 import com.gma.solarself.R
-import com.gma.solarself.databinding.FragmentConfigWidgetCardBinding
+import com.gma.solarself.databinding.FragmentConfigMonitoringCardBinding
 import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.view.components.CustomSnackBar
-import com.gma.solarself.viewModel.ConfigWidgetCardViewModel
+import com.gma.solarself.viewModel.ConfigMonitoringCardViewModel
 
-class ConfigWidgetCardFragment :
-    PatternFragment<FragmentConfigWidgetCardBinding, ConfigWidgetCardViewModel>(
-        FragmentConfigWidgetCardBinding::inflate,
-        ConfigWidgetCardViewModel::class
+class ConfigMonitoringCardFragment :
+    PatternFragment<FragmentConfigMonitoringCardBinding, ConfigMonitoringCardViewModel>(
+        FragmentConfigMonitoringCardBinding::inflate,
+        ConfigMonitoringCardViewModel::class
     ) {
     private var lastSelectionStation: String? = null
 
@@ -37,15 +36,23 @@ class ConfigWidgetCardFragment :
                 clearFocus()
             }
             setOnItemClickListener { _, _, i, _ ->
-                val selectedStation = adapterStationList.getItem(i).toString()
-                viewModel.saveWidgetConfig(selectedStation)
+                lastSelectionStation = adapterStationList.getItem(i).toString()
+                saveWidgetConfig()
             }
         }
     }
 
+    private fun saveWidgetConfig() {
+        viewModel.saveWidgetConfig(
+            lastSelectionStation
+        )
+    }
+
     private fun setupWidgetConfigUnselectStation() {
         binding.btnClrSelection.setOnClickListener {
-            viewModel.deleteWidgetConfig()
+            lastSelectionStation = null
+            saveWidgetConfig()
+//            viewModel.deleteWidgetConfig()
             binding.stationList.text = null
         }
     }
@@ -53,8 +60,8 @@ class ConfigWidgetCardFragment :
     override fun setupObservers() {
         viewModel.loading.observe(requireActivity(), ::setupLoadingShimmer)
         viewModel.stationList.observe(requireActivity(), ::setupStationList)
-        viewModel.widgetConfig.observe(requireActivity(), ::setupWidgetConfig)
-        viewModel.widgedConfigUpdated.observe(requireActivity()) {
+        viewModel.stationIdConfigured.observe(requireActivity(), ::setupWidgetConfig)
+        viewModel.configUpdated.observe(requireActivity()) {
             CustomSnackBar
                 .make(view, R.string.config_screen_widget_updated)
                 .setSuccessStyle()
@@ -80,8 +87,8 @@ class ConfigWidgetCardFragment :
         }
     }
 
-    private fun setupWidgetConfig(widgetConfig: WidgetConfig?) {
-        lastSelectionStation = widgetConfig?.monitoredStationId
+    private fun setupWidgetConfig(monitoredStationId: String?) {
+        lastSelectionStation = monitoredStationId
         setLastSelectedStation()
     }
 

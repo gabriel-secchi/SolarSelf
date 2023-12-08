@@ -27,6 +27,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/icon_energy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_battery_4_bar_24"
@@ -48,6 +49,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/icon_power"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_bolt_24"
@@ -91,6 +93,7 @@
                     android:text="@string/dot_zero" />
 
                 <TextView
+                    android:id="@+id/day_energy_metric"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/text_emphasis_small"

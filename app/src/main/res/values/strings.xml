@@ -10,6 +10,8 @@
 
     <!-- Actions -->
     <string name="previous">Previous</string>
+    <string name="cancel">Cancelar</string>
+    <string name="select">Selecionar</string>
 
     <!-- Fields Validation -->
     <string name="invalid_field">Campo inválido</string>
@@ -23,10 +25,12 @@
     <string name="enter">Entrar</string>
 
     <!-- Config Screen -->
-    <string name="config_screen_widget">Widget</string>
+    <string name="config_screen_monitoring">Monitoramento</string>
     <string name="config_screen_monitored_station">Estação monitorada</string>
     <string name="config_screen_widget_updated">Configuração do Widget salva</string>
     <string name="config_screen_widget_error">Erro ao salvar a configuração do Widget</string>
+    <string name="config_screen_widget_bg_color">Cor de fundo</string>
+    <string name="config_screen_widget_txt_color">Cor do texto</string>
 
     <!-- Data Screen -->
     <string name="data_screen_close_app">Pressione novamente para fechar o app</string>

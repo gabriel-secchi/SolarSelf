@@ -4,5 +4,5 @@ import com.gma.data_local.model.WidgetConfig
 
 interface ConfigWidgetUseCase {
     suspend fun getConfig(): WidgetConfig?
-    suspend fun saveConfig(widgetConfig: WidgetConfig)
+    suspend fun saveConfig(monitoredStationId: String)
 }

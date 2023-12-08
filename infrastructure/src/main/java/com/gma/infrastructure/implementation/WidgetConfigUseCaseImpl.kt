@@ -4,7 +4,6 @@ import com.gma.data_local.dao.ConfigWidgetDao
 import com.gma.infrastructure.mapper.toWidgetConfigModel
 import com.gma.infrastructure.model.WidgetConfig
 import com.gma.infrastructure.useCase.WidgetConfigUseCase
-import com.gma.data_local.model.WidgetConfig as WidgetConfigDaoModel
 
 class WidgetConfigUseCaseImpl(
     private val configWidgetDao: ConfigWidgetDao
@@ -14,15 +13,9 @@ class WidgetConfigUseCaseImpl(
         return configWidgetDao.getConfig()?.toWidgetConfigModel()
     }
 
-    override suspend fun saveConfig(widgetConfig: WidgetConfig): Boolean {
+    override suspend fun saveConfig(monitoredStationId: String): Boolean {
         return try {
-            configWidgetDao.saveConfig(
-                WidgetConfigDaoModel(
-                    monitoredStationId = widgetConfig.monitoredStationId,
-                    backgroundColor = widgetConfig.backgroundColor,
-                    textColor = widgetConfig.textColor
-                )
-            )
+            configWidgetDao.saveConfig( monitoredStationId )
             true
         } catch (ex: Exception) {
             false

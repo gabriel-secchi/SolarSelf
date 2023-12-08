@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:shimmer_highlight_color="@color/shimmer_effect"
-    tools:context=".view.config.ConfigWidgetCardFragment">
+    tools:context=".view.config.ConfigMonitoringCardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_panel"
@@ -15,18 +15,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/title_card_config_widget"
+            android:id="@+id/title_card_config_monitoring"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/sizeTiny"
             android:layout_marginTop="@dimen/sizeTiny"
-            android:text="@string/config_screen_widget"
+            android:text="@string/config_screen_monitoring"
             android:textColor="@color/textColorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_config_widget"
+            android:id="@+id/card_config_monitoring"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sizeMicro"
@@ -34,7 +34,7 @@
             android:paddingHorizontal="@dimen/sizeSmall"
             android:paddingVertical="@dimen/sizeStandart"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_card_config_widget">
+            app:layout_constraintTop_toBottomOf="@+id/title_card_config_monitoring">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/container_st_list"

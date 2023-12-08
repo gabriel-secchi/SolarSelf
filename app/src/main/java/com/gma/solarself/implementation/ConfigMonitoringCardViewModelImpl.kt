@@ -1,26 +1,22 @@
 package com.gma.solarself.implementation
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.model.StationDataPage
-import com.gma.infrastructure.model.WidgetConfig
+import com.gma.infrastructure.useCase.ConfigStationUseCase
 import com.gma.infrastructure.useCase.UserStationDataUseCase
-import com.gma.infrastructure.useCase.WidgetConfigUseCase
 import com.gma.solarself.R
-import com.gma.solarself.useCase.ConfigToolbarUseCase
-import com.gma.solarself.viewModel.ConfigViewModel
-import com.gma.solarself.viewModel.ConfigWidgetCardViewModel
+import com.gma.solarself.viewModel.ConfigMonitoringCardViewModel
 import kotlinx.coroutines.launch
 
-class ConfigWidgetCardViewModelImpl(
+class ConfigMonitoringCardViewModelImpl(
     private val userStationDataUseCase: UserStationDataUseCase,
-    private val widgetConfigUseCase: WidgetConfigUseCase
-) : ConfigWidgetCardViewModel() {
+    private val configStationUseCase: ConfigStationUseCase
+) : ConfigMonitoringCardViewModel() {
     override val loading = MutableLiveData<Boolean>()
     override val stationList = MutableLiveData<List<StationDataPage>>()
-    override val widgetConfig = MutableLiveData<WidgetConfig?>()
-    override val widgedConfigUpdated = MutableLiveData<Unit>()
+    override val stationIdConfigured = MutableLiveData<String?>()
+    override val configUpdated = MutableLiveData<Unit>()
     override val error = MutableLiveData<Int>()
 
     init {
@@ -34,11 +30,9 @@ class ConfigWidgetCardViewModelImpl(
                 val list = userStationDataUseCase.getList()
                 stationList.postValue(list)
                 setSelectedStation()
-            }
-            catch (ex: Exception) {
+            } catch (ex: Exception) {
                 ex.printStackTrace()
-            }
-            finally {
+            } finally {
                 loading.postValue(false)
             }
 
@@ -46,25 +40,16 @@ class ConfigWidgetCardViewModelImpl(
     }
 
     private suspend fun setSelectedStation() {
-        val config = widgetConfigUseCase.getConfig()
-        widgetConfig.postValue(config)
+        val stationId = configStationUseCase.getConfig()
+        stationIdConfigured.postValue(stationId)
     }
 
     override fun saveWidgetConfig(stationId: String?) {
         updateWidgetConfig {
-            widgetConfigUseCase.saveConfig(
-                WidgetConfig(
-                    monitoredStationId = stationId ?: "",
-                    backgroundColor = "",
-                    textColor = ""
-                )
-            )
-        }
-    }
-
-    override fun deleteWidgetConfig() {
-        updateWidgetConfig {
-            widgetConfigUseCase.deleteConfig()
+            if(stationId.isNullOrBlank())
+                configStationUseCase.removeConfig()
+            else
+                configStationUseCase.saveConfig(stationId)
         }
     }
 
@@ -73,14 +58,13 @@ class ConfigWidgetCardViewModelImpl(
             loading.postValue(true)
             try {
                 if (callback())
-                    widgedConfigUpdated.postValue(Unit)
+                    configUpdated.postValue(Unit)
                 else
                     throw Exception()
-            }
-            catch (ex: Exception) {
+            } catch (ex: Exception) {
+                ex.printStackTrace()
                 error.postValue(R.string.config_screen_widget_error)
-            }
-            finally {
+            } finally {
                 loading.postValue(false)
             }
         }

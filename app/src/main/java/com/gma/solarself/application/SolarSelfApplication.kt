@@ -2,7 +2,7 @@ package com.gma.solarself.application
 
 import android.app.Application
 import android.content.Context
-import com.gma.data_local.di.infrastructureModule
+import com.gma.infrastructure.di.infrastructureModule
 import com.gma.solarself.di.appModule
 import com.gma.widget.di.widgetModule
 import org.koin.android.ext.koin.androidContext

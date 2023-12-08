@@ -3,6 +3,7 @@ package com.gma.widget.implementation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.model.UserStationModel
+import com.gma.infrastructure.model.WidgetConfig
 import com.gma.infrastructure.useCase.ApiDataAccessUseCase
 import com.gma.infrastructure.useCase.UserStationDataUseCase
 import com.gma.infrastructure.useCase.WidgetConfigUseCase
@@ -21,37 +22,29 @@ class WidgetViewModelImpl(
         viewModelScope.launch {
             try {
                 loading.postValue(true)
-                if (alreadyConfigured()) {
-                    monitoredStationId?.let { stationId ->
+                notConfigured = true
+                getWidgetConfig()?.let { config ->
+                    val stationId = config.monitoredStationId
+                    if (appIsConfigured() && stationId.isNotBlank()) {
+                        notConfigured = false
+
                         val data = userStationDataUseCase.getDetail(stationId)
                         userStationData.postValue(data)
                     }
                 }
-            }
-            catch (ex: Exception) {
+            } catch (ex: Exception) {
                 ex.printStackTrace()
-            }
-            finally {
+            } finally {
                 loading.postValue(false)
             }
         }
     }
 
-    private suspend fun fillMonitoredStation() {
-        monitoredStationId = widgetConfigUseCase.getConfig()?.monitoredStationId
+    private suspend fun getWidgetConfig(): WidgetConfig? {
+        return widgetConfigUseCase.getConfig()
     }
 
-    private suspend fun alreadyConfigured(): Boolean {
-        val dataAccess = apiDataAccessUseCase.get()
-        fillMonitoredStation()
-
-        val configured = apiDataAccessUseCase.get()?.let {
-            monitoredStationId?.let {
-                true
-            }
-        } == true
-
-        notConfigured = !configured
-        return configured
+    private suspend fun appIsConfigured(): Boolean {
+        return apiDataAccessUseCase.get() != null
     }
 }

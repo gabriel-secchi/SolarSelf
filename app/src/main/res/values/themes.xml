@@ -11,6 +11,10 @@
         <item name="android:textColor">@color/textColorPrimaryButton</item>
     </style>
 
+    <style name="primaryButtonNoBackround" parent="primaryButton">
+        <item name="android:background">@color/transparent</item>
+    </style>
+
     <style name="primaryRoundedButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">@drawable/background_circle</item>
         <item name="android:backgroundTint">@color/primaryInverse</item>

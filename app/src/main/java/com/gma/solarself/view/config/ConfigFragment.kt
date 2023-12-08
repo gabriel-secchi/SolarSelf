@@ -11,7 +11,7 @@ class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
     override fun setupViews() {
         viewModel.hideToolbarConfigButton()
         childFragmentManager.beginTransaction()
-            .replace(binding.configWidgetCard.id, ConfigWidgetCardFragment())
+            .replace(binding.configWidgetCard.id, ConfigMonitoringCardFragment())
             .commit()
     }
 
