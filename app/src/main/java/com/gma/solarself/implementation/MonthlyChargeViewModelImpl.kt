@@ -4,28 +4,39 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.useCase.StationMonthUseCase
 import com.gma.solarself.model.MonthlyChargeModel
+import com.gma.solarself.utils.currentMonth
+import com.gma.solarself.utils.currentYear
 import com.gma.solarself.viewModel.MonthlyChargeViewModel
 import kotlinx.coroutines.launch
-import java.time.LocalDate
+import java.util.Calendar
+import java.util.Date
 
 class MonthlyChargeViewModelImpl(
     private val stationMonthUseCase: StationMonthUseCase
 ) : MonthlyChargeViewModel() {
-    override val referenceMonth = MutableLiveData<String>()
+    override val loading = MutableLiveData<Boolean>()
+    override val referenceDate = MutableLiveData<Date>()
     override val monthlySummary = MutableLiveData<MonthlyChargeModel?>()
 
-    /*init {
-        fetchMonthlySummary()
-    }*/
+    private lateinit var _lastStationId: String
 
-    override fun fetchMonthlySummary(stationId: String) {
+    override fun updateReferenceDate(month: Int, year: Int) {
+        val newReferenceDate = Calendar.getInstance().apply {
+            set(year, month, 1)
+        }
+        fetchMonthlySummary(_lastStationId, newReferenceDate.time)
+    }
+
+    override fun fetchMonthlySummary(stationId: String, date: Date?) {
         viewModelScope.launch {
             try {
-                val curDate = LocalDate.now()
-                val month = curDate.monthValue
-                val year = curDate.year
+                loading.postValue(true)
+                _lastStationId = stationId
+                val curDate = date ?: Date()
+                val month = curDate.currentMonth()
+                val year = curDate.currentYear()
 
-                referenceMonth.postValue("$month/$year")
+                referenceDate.postValue(curDate)
 
                 val data = stationMonthUseCase.getData(
                     stationId = stationId,
@@ -46,6 +57,9 @@ class MonthlyChargeViewModelImpl(
                 }
             } catch (ex: Exception) {
                 monthlySummary.postValue(null)
+            }
+            finally {
+                loading.postValue(false)
             }
         }
     }

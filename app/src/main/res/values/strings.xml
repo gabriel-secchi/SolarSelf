@@ -9,6 +9,7 @@
     <string name="config_fragment_label">Configuração</string>
 
     <!-- Actions -->
+    <string name="ok">Ok</string>
     <string name="previous">Previous</string>
     <string name="cancel">Cancelar</string>
     <string name="select">Selecionar</string>
@@ -44,5 +45,22 @@
     <string name="real_time_charge_title">Carga atual</string>
     <string name="real_time_charge">Carga:</string>
     <string name="real_time_charge_power">Potência:</string>
+
+    <!-- Month year dialog -->
+    <string name="dialog_month_year_title">Selecione o mês referente</string>
+    <string-array name="month_list">
+        <item>Jan</item>
+        <item>Fev</item>
+        <item>Mar</item>
+        <item>Abr</item>
+        <item>Mai</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Ago</item>
+        <item>Set</item>
+        <item>Out</item>
+        <item>Nov</item>
+        <item>Dez</item>
+    </string-array>
 
 </resources>

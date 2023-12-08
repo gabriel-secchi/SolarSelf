@@ -11,11 +11,6 @@ class DataSummaryFragment : PatternFragment<FragmentDataSummaryBinding, SummaryD
     SummaryDataViewModel::class
 ) {
     override fun setupViews() {
-        /*val stationId = "1298491919449016030"
-        childFragmentManager.beginTransaction()
-            .replace(binding.monthlyChargeCard.id, MonthlyChargeCardFragment(stationId))
-            .replace(binding.realTimeCard.id, RealTimeChargeCardFragment(stationId))
-            .commit()*/
         viewModel.setupMonitoredStation()
     }
 
