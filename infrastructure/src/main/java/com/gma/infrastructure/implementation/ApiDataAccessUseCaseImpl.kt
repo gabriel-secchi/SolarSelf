@@ -26,4 +26,8 @@ class ApiDataAccessUseCaseImpl(
         dataAccessUseCase.saveDataAccess(dataAccess)
         saveRemoteApiDataAccess.execute(dataAccess)
     }
+
+    override suspend fun delete(): Boolean {
+        return dataAccessUseCase.removeDataAccess()
+    }
 }

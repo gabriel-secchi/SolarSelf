@@ -6,4 +6,5 @@ interface ApiDataAccessUseCase {
 
     suspend fun get(): ApiDataAccessModel?
     suspend fun save(apiDataAccess: ApiDataAccessModel)
+    suspend fun delete(): Boolean
 }

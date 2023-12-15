@@ -5,4 +5,5 @@ import com.gma.data_local.model.DataAccess
 interface DataAccessUseCase {
     suspend fun getDataAccess(): DataAccess?
     suspend fun saveDataAccess(dataAccess: DataAccess)
+    suspend fun removeDataAccess(): Boolean
 }

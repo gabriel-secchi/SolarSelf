@@ -63,7 +63,7 @@ class ConfigMonitoringCardViewModelImpl(
                     throw Exception()
             } catch (ex: Exception) {
                 ex.printStackTrace()
-                error.postValue(R.string.config_screen_widget_error)
+                error.postValue(R.string.config_screen_station_monitored_error)
             } finally {
                 loading.postValue(false)
             }

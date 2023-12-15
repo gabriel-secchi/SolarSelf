@@ -4,15 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="@dimen/sizeTiny"
-    android:paddingHorizontal="@dimen/sizeSmall"
+    android:fitsSystemWindows="true"
     tools:context=".view.config.ConfigFragment">
 
-    <FrameLayout
-        android:id="@+id/config_widget_card"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/sizeSmall"
+        android:layout_marginVertical="@dimen/sizeTiny"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <FrameLayout
+            android:id="@+id/config_widget_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logoff"
+            style="@style/primaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/logoff"
+            app:icon="@drawable/outline_output_24"
+            app:iconGravity="textEnd"
+            app:iconTint="@color/textColorPrimaryButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

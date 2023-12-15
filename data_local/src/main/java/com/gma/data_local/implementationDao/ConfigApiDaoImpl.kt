@@ -29,4 +29,18 @@ class ConfigApiDaoImpl(
             )
         }
     }
+
+    override fun removeDataAccess() : Boolean {
+        try {
+            val data = findFirst()
+            data?.let {
+                delete(it)
+            }
+            return true
+        }
+        catch (ex: Exception) {
+            return false
+        }
+
+    }
 }

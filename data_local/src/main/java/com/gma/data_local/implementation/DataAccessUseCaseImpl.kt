@@ -15,4 +15,7 @@ class DataAccessUseCaseImpl(
         configApiDao.saveDataAccess(dataAccess)
     }
 
+    override suspend fun removeDataAccess(): Boolean {
+        return configApiDao.removeDataAccess()
+    }
 }

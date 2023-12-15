@@ -63,7 +63,7 @@ class ConfigMonitoringCardFragment :
         viewModel.stationIdConfigured.observe(requireActivity(), ::setupWidgetConfig)
         viewModel.configUpdated.observe(requireActivity()) {
             CustomSnackBar
-                .make(view, R.string.config_screen_widget_updated)
+                .make(view, R.string.config_screen_station_monitored_updated)
                 .setSuccessStyle()
                 .show()
             lastSelectionStation = binding.stationList.text.toString()
