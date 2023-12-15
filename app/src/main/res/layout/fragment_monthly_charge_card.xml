@@ -27,11 +27,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/tv_reference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minWidth="@dimen/sizeNone"
+            android:minHeight="@dimen/sizeNone"
             android:layout_marginStart="@dimen/sizeTiny"
+            android:paddingVertical="@dimen/sizeNano"
+            android:paddingHorizontal="@dimen/sizeMicro"
+            app:icon="@drawable/outline_arrow_drop_down_24"
+            app:iconGravity="textEnd"
+            app:iconTint="@color/textColorPrimaryButton"
             android:text="@string/value_none"
             android:textColor="@color/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/card_title"
