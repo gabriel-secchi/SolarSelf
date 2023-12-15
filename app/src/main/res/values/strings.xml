@@ -28,6 +28,7 @@
 
     <!-- Config Screen -->
     <string name="config_screen_monitoring">Monitoramento</string>
+    <string name="config_screen_logout_error">Erro ao fazer logout. Tente novamente.</string>
     <string name="config_screen_monitored_station">Estação monitorada</string>
     <string name="config_screen_station_monitored_updated">Configuração salva</string>
     <string name="config_screen_station_monitored_error">Erro ao salvar a configuração</string>

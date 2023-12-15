@@ -28,16 +28,11 @@ class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
 
     private fun loggedOut(success: Boolean) {
         if (success) {
-            //requireActivity().finish()
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            requireActivity().startActivity(intent)
-            //requireActivity().finishAffinity()
-            Runtime.getRuntime().exit(0)
+            restartApp()
         } else {
             CustomSnackBar
-                .make(view, R.string.config_screen_station_monitored_updated)
-                .setSuccessStyle()
+                .make(view, R.string.config_screen_logout_error)
+                .setErrorStyle()
                 .show()
         }
     }
@@ -52,5 +47,12 @@ class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
             .setNegativeButton(R.string.cancel) { i, _ -> i?.cancel() }
             .create()
             .show()
+    }
+
+    private fun restartApp() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        requireActivity().startActivity(intent)
+        Runtime.getRuntime().exit(0)
     }
 }
