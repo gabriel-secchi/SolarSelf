@@ -33,14 +33,29 @@
     <string name="config_screen_station_monitored_updated">Configuração salva</string>
     <string name="config_screen_station_monitored_error">Erro ao salvar a configuração</string>
     <string name="config_screen_logoff_alert">Você realmente quer apagar seus dados de login e sair do monitoramento?</string>
+    <string name="config_screen_period_monitoring">Período</string>
+    <string name="config_screen_period_initial_date">Data inicial</string>
+    <string name="config_screen_period_final_date">Data final</string>
+    <string name="config_screen_period_auto_update">Atualizar datas automaticamente ao final do período</string>
+    <string name="config_screen_period_start_date_invalid">A data inicial do período está inválida</string>
+    <string name="config_screen_period_end_date_invalid">A data final do período está inválida</string>
+    <string name="config_screen_period_save_success">Período salvo com sucesso</string>
+    <string name="config_screen_period_save_error">Falha ao salver período</string>
+    <string name="config_screen_period_clear_success">Período removido com sucesso</string>
+    <string name="config_screen_period_clear_error">Não foi possível limpar o período</string>
 
     <!-- Data Screen -->
     <string name="data_screen_close_app">Pressione novamente para fechar o app</string>
 
+    <!-- Charge -->
+    <string name="total_charge">Total:</string>
+    <string name="average_charge">Média:</string>
+
     <!-- Monthly charge card -->
-    <string name="monthly_charge">Carga mensal</string>
-    <string name="monthly_charge_total">Total:</string>
-    <string name="monthly_charge_average">Média:</string>
+    <string name="monthly_charge">Mensal</string>
+
+    <!-- Period charge -->
+    <string name="period_charge">Período</string>
 
     <!-- Realtime charge card -->
     <string name="real_time_charge_title">Carga atual</string>

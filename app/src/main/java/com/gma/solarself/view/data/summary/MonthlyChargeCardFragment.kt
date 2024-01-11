@@ -3,8 +3,7 @@ package com.gma.solarself.view.data.summary
 import androidx.fragment.app.FragmentManager
 import com.gma.solarself.databinding.FragmentMonthlyChargeCardBinding
 import com.gma.solarself.model.MonthlyChargeModel
-import com.gma.solarself.utils.currentMonth
-import com.gma.solarself.utils.currentYear
+import com.gma.solarself.utils.currenMonthAndYear
 import com.gma.solarself.utils.twoDecimalPlaces
 import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.view.components.MonthYearPickerDialog
@@ -41,18 +40,16 @@ class MonthlyChargeCardFragment(
     }
 
     private fun setupLoading(isVisible: Boolean) {
-        if(isVisible) {
+        if (isVisible) {
             binding.root.showShimmer(true)
-        }
-        else {
+        } else {
             binding.root.stopShimmer()
             binding.root.hideShimmer()
         }
     }
 
     private fun setupReferenceDateText(date: Date) {
-        val monthYearText = "${date.currentMonth()}/${date.currentYear()}"
-        binding.tvReference.text = monthYearText
+        binding.tvReference.text = date.currenMonthAndYear()
     }
 
     private fun setupMonthlySummary(monthlySummary: MonthlyChargeModel?) {

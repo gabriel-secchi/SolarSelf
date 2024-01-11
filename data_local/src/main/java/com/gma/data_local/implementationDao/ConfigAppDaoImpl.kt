@@ -2,9 +2,6 @@ package com.gma.data_local.implementationDao
 
 import com.gma.data_local.DbModel.DbConfigModel
 import com.gma.data_local.dao.ConfigAppDao
-import com.gma.data_local.dao.ConfigWidgetDao
-import com.gma.data_local.model.WidgetConfig
-import com.gma.data_local.realmDatabase.KEY_CONFIG_WIDGET
 import io.realm.kotlin.Realm
 
 class ConfigAppDaoImpl(

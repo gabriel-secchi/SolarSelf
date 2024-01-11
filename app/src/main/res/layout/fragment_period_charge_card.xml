@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:shimmer_highlight_color="@color/shimmer_effect"
-    tools:context=".view.data.summary.MonthlyChargeCardFragment">
+    tools:context=".view.data.summary.PeriodChargeCardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_panel"
@@ -20,31 +20,24 @@
             android:id="@+id/card_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_charge"
+            android:text="@string/period_charge"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/textSizeStandart"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
+        <TextView
             android:id="@+id/tv_reference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="@dimen/sizeNone"
-            android:minHeight="@dimen/sizeNone"
             android:layout_marginStart="@dimen/sizeTiny"
-            android:paddingVertical="@dimen/sizeNano"
-            android:paddingHorizontal="@dimen/sizeMicro"
-            app:icon="@drawable/outline_arrow_drop_down_24"
-            app:iconGravity="textEnd"
-            app:iconTint="@color/textColorPrimaryButton"
             android:text="@string/value_none"
             android:textColor="@color/textColorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/card_title"
             app:layout_constraintStart_toEndOf="@+id/card_title"
             app:layout_constraintTop_toTopOf="@+id/card_title"
-            tools:text="10-2023" />
+            tools:text="01/03 - 03-04" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"
@@ -61,22 +54,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sizeTiny"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/total_charge"
-                android:textColor="@color/textColorPrimary"/>
+                android:textColor="@color/textColorPrimary" />
 
             <TextView
                 android:id="@+id/tv_total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/value_none"
                 android:layout_marginStart="@dimen/sizeTiny"
-                android:textColor="@color/textColorPrimary"/>
+                android:text="@string/value_none"
+                android:textColor="@color/textColorPrimary" />
 
         </LinearLayout>
 
@@ -86,22 +79,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sizeTiny"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/panel_total"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/panel_total">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/average_charge"
-                android:textColor="@color/textColorPrimary"/>
+                android:textColor="@color/textColorPrimary" />
 
             <TextView
                 android:id="@+id/tv_average"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/value_none"
                 android:layout_marginStart="@dimen/sizeTiny"
-                android:textColor="@color/textColorPrimary"/>
+                android:text="@string/value_none"
+                android:textColor="@color/textColorPrimary" />
 
         </LinearLayout>
 

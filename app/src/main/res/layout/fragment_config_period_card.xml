@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:shimmer_highlight_color="@color/shimmer_effect"
+    tools:context=".view.config.ConfigPeriodCardFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_card_config_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/sizeTiny"
+            android:layout_marginTop="@dimen/sizeTiny"
+            android:text="@string/config_screen_period_monitoring"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_config_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizeMicro"
+            android:background="@drawable/rouded_surface_card"
+            android:paddingHorizontal="@dimen/sizeSmall"
+            android:paddingVertical="@dimen/sizeStandart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_card_config_period">
+
+            <com.gma.solarself.view.components.CustomTextInputEditText
+                android:id="@+id/input_period_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="@string/config_screen_period_initial_date"
+                app:startIconDrawable="@drawable/outline_calendar_month_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageButton
+                android:id="@+id/btn_clr_initial_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/primaryRoundedButton"
+                android:layout_marginTop="@dimen/sizeTiny"
+                android:layout_marginEnd="@dimen/sizeTiny"
+                android:src="@drawable/outline_close_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/input_period_start"
+                app:layout_constraintEnd_toEndOf="@+id/input_period_start"
+                app:layout_constraintTop_toTopOf="@+id/input_period_start"
+                tools:visibility="visible" />
+
+            <com.gma.solarself.view.components.CustomTextInputEditText
+                android:id="@+id/input_period_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="@string/config_screen_period_final_date"
+                app:startIconDrawable="@drawable/outline_calendar_month_24"
+                android:layout_marginTop="@dimen/sizeSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_period_start"/>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/check_autoUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sizeSmall"
+                android:text="@string/config_screen_period_auto_update"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_period_end" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

@@ -63,6 +63,18 @@ class CustomTextInputEditText @JvmOverloads constructor(
         }
     }
 
+    fun OnClickListener(focusable: Boolean = true, listener: OnClickListener?) {
+        binding.input.apply {
+            isFocusable = focusable
+            isFocusableInTouchMode = focusable
+            setOnClickListener(listener)
+            setOnFocusChangeListener { view, hasFocus ->
+                if(hasFocus)
+                    listener?.onClick(view)
+            }
+        }
+    }
+
     private fun setupFocusOut() {
         binding.input.setOnFocusChangeListener { _, focus ->
             config?.let {

@@ -16,7 +16,8 @@ class ConfigFragment : PatternFragment<FragmentConfigBinding, ConfigViewModel>(
     override fun setupViews() {
         viewModel.hideToolbarConfigButton()
         childFragmentManager.beginTransaction()
-            .replace(binding.configWidgetCard.id, ConfigMonitoringCardFragment())
+            .replace(binding.configStationCard.id, ConfigMonitoringCardFragment())
+            .replace(binding.configPeriodCard.id, ConfigPeriodCardFragment())
             .commit()
         binding.btnLogoff.setOnClickListener { setupLogoff() }
     }
