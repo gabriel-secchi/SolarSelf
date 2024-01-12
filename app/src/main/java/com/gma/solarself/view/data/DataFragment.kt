@@ -2,9 +2,7 @@ package com.gma.solarself.view.data
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.gma.infrastructure.model.UserStationModel
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentDataBinding
 import com.gma.solarself.view.PatternFragment
@@ -16,20 +14,45 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     FragmentDataBinding::inflate,
     SolarDataViewModel::class
 ) {
+    private var monitoredStationId: String? = null
     override fun setupViews() {
-        setupChildFragmentManager()
+        viewModel.setupMonitoredStation()
+        setupSwipeRefresh()
         setupBackPressedButton()
     }
 
     override fun setupObservers() {
         viewModel.loading.observe(requireActivity(), ::displayLoading)
-        viewModel.stationData.observe(requireActivity(), ::setupStationData)
+        viewModel.monitoredStationId.observe(requireActivity(), ::setupMonitoredStation)
+    }
+
+    override fun displayLoading(isVisible: Boolean) {
+        super.displayLoading(isVisible)
+        if (!isVisible)
+            binding.swipeRefreshLayout.isRefreshing = false
+    }
+
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.setupMonitoredStation()
+        }
     }
 
     private fun setupChildFragmentManager() {
-        childFragmentManager.beginTransaction()
-            .replace(binding.stationSummaryList.id, DataSummaryFragment())
-            .commit()
+        if (monitoredStationId.isNullOrBlank()) {
+            childFragmentManager.apply {
+                fragments.forEach {
+                    beginTransaction()
+                        .remove(it)
+                        .commit()
+                }
+                //TODO: tela de station not configured
+            }
+        } else {
+            childFragmentManager.beginTransaction()
+                .replace(binding.stationSummaryList.id, DataSummaryFragment(monitoredStationId!!))
+                .commit()
+        }
     }
 
     private fun setupBackPressedButton() {
@@ -57,16 +80,9 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
         viewModel.showToolbarConfigButton()
     }
 
-    private fun setupStationData(station: UserStationModel?) {
-        try {
-            binding.textviewSecond.text = station?.id ?: "no data"
-            binding.tvPower.text = station?.power.toString().plus(" W")
-            binding.tvEnergy.text = station?.dayEnergy.toString().plus(" KWh")
-        } catch (ex: Exception) {
-            val message = ex.message
-            Log.e("setupDataStation", message, ex)
-            ex.printStackTrace()
-        }
+    private fun setupMonitoredStation(stationId: String?) {
+        monitoredStationId = stationId
+        setupChildFragmentManager()
     }
 
     private companion object {

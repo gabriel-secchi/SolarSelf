@@ -51,15 +51,13 @@ val appModule = module {
 
     viewModel<SolarDataViewModel> {
         SolarDataViewModelImpl(
-            userStationDataUseCase = get(),
+            configStationUseCase = get(),
             configToolbarUseCase = get()
         )
     }
 
     viewModel<SummaryDataViewModel> {
-        SummaryDataViewModelImpl(
-            configStationUseCase = get()
-        )
+        SummaryDataViewModelImpl()
     }
 
     viewModel<MonthlyChargeViewModel> {

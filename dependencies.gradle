@@ -6,7 +6,8 @@ ext {
     ]
 
     app = defaultDependencies + [
-            [configuration: "implementation", dependency: "$facebook_shimmer"]
+            [configuration: "implementation", dependency: "$facebook_shimmer"],
+            [configuration: "implementation", dependency: "$swipe_refresh"]
     ]
     infrastructure = defaultDependencies
     widget = defaultDependencies

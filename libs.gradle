@@ -18,4 +18,7 @@ ext {
 
     facebook_shimmer_version = "0.5.0"
     facebook_shimmer = "com.facebook.shimmer:shimmer:$facebook_shimmer_version"
+
+    swipe_refresh_version = "1.1.0"
+    swipe_refresh = "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
 }

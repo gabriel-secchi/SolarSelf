@@ -58,7 +58,7 @@ abstract class PatternFragment<VB : ViewBinding, VM : ViewModel>(
         return binding.root
     }
 
-    protected fun displayLoading(isVisible: Boolean) {
+    protected open fun displayLoading(isVisible: Boolean) {
         view?.let {
             val loading = it.findViewById<RelativeLayout>(R.id.loading)
             loading.isVisible = isVisible

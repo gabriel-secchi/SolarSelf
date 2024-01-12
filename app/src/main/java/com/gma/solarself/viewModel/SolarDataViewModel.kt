@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.gma.infrastructure.model.UserStationModel
 
 abstract class SolarDataViewModel : ExtendViewModel, ViewModel() {
-    abstract val stationData: LiveData<UserStationModel?>
+    abstract val monitoredStationId: LiveData<String?>
 
-    abstract fun fetchDataAccess()
+    abstract fun setupMonitoredStation()
     abstract fun showToolbarConfigButton()
 }

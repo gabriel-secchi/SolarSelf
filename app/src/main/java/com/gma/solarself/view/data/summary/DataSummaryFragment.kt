@@ -4,24 +4,26 @@ import com.gma.solarself.databinding.FragmentDataSummaryBinding
 import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.viewModel.SummaryDataViewModel
 
-class DataSummaryFragment : PatternFragment<FragmentDataSummaryBinding, SummaryDataViewModel>(
+class DataSummaryFragment(
+    private val stationId: String
+) : PatternFragment<FragmentDataSummaryBinding, SummaryDataViewModel>(
     FragmentDataSummaryBinding::inflate,
     SummaryDataViewModel::class
 ) {
     override fun setupViews() {
-        viewModel.setupMonitoredStation()
+        setupSummaryComponents()
     }
 
     override fun setupObservers() {
-        viewModel.monitoredStationId.observe(requireActivity(), ::setupSummaryComponents)
+        // N/A
     }
 
-    private fun setupSummaryComponents(monitoredStationId: String) {
+    private fun setupSummaryComponents() {
         view?.post {
             childFragmentManager.beginTransaction()
-                .replace(binding.periodChargeCard.id, PeriodChargeCardFragment(monitoredStationId))
-                .replace(binding.monthlyChargeCard.id, MonthlyChargeCardFragment(monitoredStationId))
-                .replace(binding.realTimeCard.id, RealTimeChargeCardFragment(monitoredStationId))
+                .replace(binding.periodChargeCard.id, PeriodChargeCardFragment(stationId))
+                .replace(binding.monthlyChargeCard.id, MonthlyChargeCardFragment(stationId))
+                .replace(binding.realTimeCard.id, RealTimeChargeCardFragment(stationId))
                 .commit()
         }
     }
