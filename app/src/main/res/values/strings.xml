@@ -20,6 +20,13 @@
     <string name="required_field">Campo obrigatório</string>
     <string name="value_is_not_url">O campo deve ser uma URL</string>
 
+    <!-- No station Configured -->
+    <string name="no_station_configured_sad_icon">☹</string>
+    <string name="no_station_configured_text">
+        Nenhuma estação configurada para o monitoramento.\n
+        Vá até as configurações ⚙ e selecione uma estação para visualizar seus dados
+    </string>
+
     <!-- Register Screen -->
     <string name="api_url">Url da API</string>
     <string name="api_key">ID da API</string>

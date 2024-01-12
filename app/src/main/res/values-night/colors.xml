@@ -10,6 +10,7 @@
     <color name="primaryInverse">#40739e</color>
     <color name="primarySurface">#222222</color>
     <color name="primaryBackgroundPopup">#333333</color>
+    <color name="primaryMessageSurface">#666666</color>
 
     <color name="snackbar_success">#006b24</color>
     <color name="snackbar_error">#9c1f00</color>

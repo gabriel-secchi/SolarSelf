@@ -26,6 +26,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/station_summary_list" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/no_station_configured"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/sizeStandart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/p1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sizeStandart"
+                android:text="@string/no_station_configured_sad_icon"
+                android:textAlignment="center"
+                android:textColor="@color/primaryMessageSurface"
+                android:textSize="@dimen/textIconSizeStandart"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/p2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sizeNano"
+                android:text="@string/no_station_configured_text"
+                android:textAlignment="center"
+                android:textColor="@color/primaryMessageSurface"
+                app:layout_constraintTop_toBottomOf="@+id/p1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <include
             android:id="@+id/loading"
             layout="@layout/loading"

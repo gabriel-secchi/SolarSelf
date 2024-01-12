@@ -7,4 +7,7 @@
     <dimen name="sizeStandart">24dp</dimen>
 
     <dimen name="roundedCircle">100dp</dimen>
+
+    <!-- texts size -->
+    <dimen name="textIconSizeStandart">40sp</dimen>
 </resources>

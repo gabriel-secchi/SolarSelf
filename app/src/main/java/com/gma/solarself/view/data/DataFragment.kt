@@ -3,6 +3,7 @@ package com.gma.solarself.view.data
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentDataBinding
 import com.gma.solarself.view.PatternFragment
@@ -39,6 +40,7 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     }
 
     private fun setupChildFragmentManager() {
+        binding.noStationConfigured.isVisible = monitoredStationId.isNullOrBlank()
         if (monitoredStationId.isNullOrBlank()) {
             childFragmentManager.apply {
                 fragments.forEach {
@@ -46,7 +48,6 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
                         .remove(it)
                         .commit()
                 }
-                //TODO: tela de station not configured
             }
         } else {
             childFragmentManager.beginTransaction()
