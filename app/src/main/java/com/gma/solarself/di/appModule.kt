@@ -12,7 +12,7 @@ import com.gma.solarself.implementation.RealTimeChargeViewModelImpl
 import com.gma.solarself.implementation.RegisterViewModelImpl
 import com.gma.solarself.implementation.SolarDataViewModelImpl
 import com.gma.solarself.implementation.SolarSelfViewModelImpl
-import com.gma.solarself.implementation.SummaryDataViewModelImpl
+import com.gma.solarself.implementation.PatternViewModelImpl
 import com.gma.solarself.useCase.ConfigToolbarUseCase
 import com.gma.solarself.useCase.DataAccessInputConfigUseCase
 import com.gma.solarself.viewModel.ConfigMonitoringCardViewModel
@@ -24,7 +24,7 @@ import com.gma.solarself.viewModel.RealTimeChargeViewModel
 import com.gma.solarself.viewModel.RegisterViewModel
 import com.gma.solarself.viewModel.SolarDataViewModel
 import com.gma.solarself.viewModel.SolarSelfViewModel
-import com.gma.solarself.viewModel.SummaryDataViewModel
+import com.gma.solarself.viewModel.PatternViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -56,8 +56,8 @@ val appModule = module {
         )
     }
 
-    viewModel<SummaryDataViewModel> {
-        SummaryDataViewModelImpl()
+    viewModel<PatternViewModel> {
+        PatternViewModelImpl()
     }
 
     viewModel<MonthlyChargeViewModel> {

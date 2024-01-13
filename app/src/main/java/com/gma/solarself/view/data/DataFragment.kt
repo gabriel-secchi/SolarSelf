@@ -8,6 +8,7 @@ import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentDataBinding
 import com.gma.solarself.view.PatternFragment
 import com.gma.solarself.view.components.CustomSnackBar
+import com.gma.solarself.view.data.body.DataBodyFragment
 import com.gma.solarself.view.data.summary.DataSummaryFragment
 import com.gma.solarself.viewModel.SolarDataViewModel
 
@@ -52,6 +53,7 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
         } else {
             childFragmentManager.beginTransaction()
                 .replace(binding.stationSummaryList.id, DataSummaryFragment(monitoredStationId!!))
+                .replace(binding.stationBodyList.id, DataBodyFragment(monitoredStationId!!))
                 .commit()
         }
     }

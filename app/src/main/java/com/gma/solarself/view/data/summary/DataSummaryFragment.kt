@@ -2,13 +2,13 @@ package com.gma.solarself.view.data.summary
 
 import com.gma.solarself.databinding.FragmentDataSummaryBinding
 import com.gma.solarself.view.PatternFragment
-import com.gma.solarself.viewModel.SummaryDataViewModel
+import com.gma.solarself.viewModel.PatternViewModel
 
 class DataSummaryFragment(
     private val stationId: String
-) : PatternFragment<FragmentDataSummaryBinding, SummaryDataViewModel>(
+) : PatternFragment<FragmentDataSummaryBinding, PatternViewModel>(
     FragmentDataSummaryBinding::inflate,
-    SummaryDataViewModel::class
+    PatternViewModel::class
 ) {
     override fun setupViews() {
         setupSummaryComponents()

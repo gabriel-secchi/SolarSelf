@@ -11,4 +11,3 @@ plugins {
 
 apply from: 'libs.gradle'
 apply from: 'dependencies.gradle'
-
