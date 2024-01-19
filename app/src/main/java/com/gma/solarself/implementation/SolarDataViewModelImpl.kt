@@ -18,9 +18,9 @@ class SolarDataViewModelImpl(
 
     override fun setupMonitoredStation() {
         runSafeWithStationId { stationId ->
-            stationId?.let {
+            //stationId?.let {
                 monitoredStationId.postValue(stationId)
-            }
+            //}
         }
     }
 

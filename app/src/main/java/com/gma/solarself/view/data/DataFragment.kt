@@ -2,9 +2,11 @@ package com.gma.solarself.view.data
 
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentDataBinding
 import com.gma.solarself.view.PatternFragment
@@ -66,10 +68,9 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     }
 
     private fun setupMonitoredStation(stationId: String?) {
-        binding.noStationConfigured.isVisible = stationId.isNullOrBlank()
         stationId?.let {
             childFragmentManager.apply {
-                if(fragments.isEmpty()) {
+                if (fragments.isEmpty()) {
                     beginTransaction()
                         .add(binding.stationSummaryList.id, DataSummaryFragment(it))
                         .add(binding.stationBodyList.id, DataBodyFragment(it))
@@ -77,6 +78,19 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
                 }
             }
         }
+        setDisplayDataComponents(stationId?.isNotBlank() == true)
+    }
+
+    private fun setDisplayDataComponents(isVisible: Boolean) {
+        setVisibilityView(binding.stationSummaryList, isVisible)
+        setVisibilityView(binding.stationBodyList, isVisible)
+        binding.noStationConfigured.isVisible = !isVisible
+        binding.swipeRefreshLayout.isEnabled = isVisible
+
+    }
+
+    private fun setVisibilityView(view: View, isVisible: Boolean) {
+        view.isVisible = isVisible
     }
 
     private companion object {
