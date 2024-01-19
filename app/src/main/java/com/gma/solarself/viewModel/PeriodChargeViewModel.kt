@@ -8,7 +8,7 @@ import com.gma.solarself.model.PeriodChargeModel
 abstract class PeriodChargeViewModel : ExtendViewModel, ViewModel() {
     abstract val noPeriodConfigured: LiveData<Boolean>
     abstract val referencePeriod: LiveData<ConfigDatePeriodModel>
-    abstract val periodSummary: LiveData<PeriodChargeModel?>
+    abstract val periodCharge: LiveData<PeriodChargeModel?>
 
     abstract fun fetchPeriodSummary(stationId: String)
 }

@@ -57,12 +57,15 @@
     <!-- Charge -->
     <string name="total_charge">Total:</string>
     <string name="average_charge">Média:</string>
+    <string name="kwh">Kwh</string>
 
     <!-- Monthly charge card -->
     <string name="monthly_charge">Mensal</string>
 
     <!-- Period charge -->
     <string name="period_charge">Período</string>
+    <string name="period_charge_chart_title">Detalhes do período de %s à %s</string>
+    <string name="period_charge_chart_tooltip">Gerado: &lt;b&gt;{point.y} Kwh&lt;/b&gt;</string>
 
     <!-- Realtime charge card -->
     <string name="real_time_charge_title">Carga atual</string>

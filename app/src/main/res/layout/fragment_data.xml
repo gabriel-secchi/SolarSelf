@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/sizeSmall">
+        android:padding="@dimen/sizeTiny">
 
         <FrameLayout
             android:id="@+id/station_summary_list"
@@ -23,6 +23,7 @@
             android:id="@+id/station_body_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sizeTiny"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/station_summary_list" />
 
@@ -31,8 +32,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="@dimen/sizeStandart"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/p1"

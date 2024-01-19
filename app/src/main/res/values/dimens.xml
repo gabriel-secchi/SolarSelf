@@ -10,4 +10,7 @@
 
     <!-- texts size -->
     <dimen name="textIconSizeStandart">40sp</dimen>
+
+    <!-- Charts -->
+    <dimen name="chart_height">300dp</dimen>
 </resources>

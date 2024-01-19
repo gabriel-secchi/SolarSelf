@@ -1,5 +1,6 @@
 package com.gma.solarself.implementation
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.useCase.StationMonthUseCase
@@ -19,6 +20,7 @@ class MonthlyChargeViewModelImpl(
     override val monthlySummary = MutableLiveData<MonthlyChargeModel?>()
 
     private lateinit var _lastStationId: String
+    private var _lastDateReference : Date? = null
 
     override fun updateReferenceDate(month: Int, year: Int) {
         val newReferenceDate = Calendar.getInstance().apply {
@@ -28,11 +30,16 @@ class MonthlyChargeViewModelImpl(
     }
 
     override fun fetchMonthlySummary(stationId: String, date: Date?) {
+        if(loading.value == true)
+            return
+
+        loading.postValue(true)
         viewModelScope.launch {
             try {
-                loading.postValue(true)
                 _lastStationId = stationId
-                val curDate = date ?: Date()
+                date?.let { _lastDateReference = it }
+
+                val curDate = date ?: _lastDateReference ?: Date()
                 val month = curDate.currentMonth()
                 val year = curDate.currentYear()
 
@@ -49,7 +56,8 @@ class MonthlyChargeViewModelImpl(
                         MonthlyChargeModel(
                             total = total.toInt(),
                             average = total / data.size,
-                            measureType = data.first().energyStr
+                            measureType = data.first().energyStr,
+                            monthlyData = data
                         )
                     )
                 } else {

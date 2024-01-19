@@ -19,11 +19,12 @@ class DataBodyFragment(
     }
 
     private fun setupBodyComponents() {
-        view?.post {
-            childFragmentManager.beginTransaction()
-                .replace(binding.periodChargeChart.id, PeriodChargeChartFragment(stationId))
-                //.replace(binding.monthlyChargeChart.id, MonthlyChargeCardFragment(stationId))
-                .commit()
+        childFragmentManager.apply {
+            if (fragments.isEmpty())
+                beginTransaction()
+                    .add(binding.periodChargeChart.id, PeriodChargeChartFragment(stationId))
+                    .add(binding.monthlyChargeChart.id, MonthlyChargeChartFragment(stationId))
+                    .commit()
         }
     }
 }

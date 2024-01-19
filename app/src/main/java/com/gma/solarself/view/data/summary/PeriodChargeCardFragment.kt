@@ -15,20 +15,23 @@ class PeriodChargeCardFragment(
     FragmentPeriodChargeCardBinding::inflate,
     PeriodChargeViewModel::class
 ) {
+    private var canLoad = false
+
     override fun setupViews() {
         viewModel.fetchPeriodSummary(stationId)
     }
 
     override fun setupObservers() {
-        viewModel.referencePeriod.observe(requireActivity(), ::setupReferencePeriodText)
-        viewModel.periodSummary.observe(requireActivity(), ::setupPeriodSummary)
-        viewModel.loading.observe(requireActivity(), ::setupLoading)
-        viewModel.noPeriodConfigured.observe(requireActivity()) { notConfigured ->
+        viewModel.referencePeriod.observe(viewLifecycleOwner, ::setupReferencePeriodText)
+        viewModel.periodCharge.observe(viewLifecycleOwner, ::setupPeriodSummary)
+        viewModel.loading.observe(viewLifecycleOwner, ::setupLoading)
+        viewModel.noPeriodConfigured.observe(viewLifecycleOwner) { notConfigured ->
             binding.root.isVisible = !notConfigured
         }
     }
 
     private fun setupLoading(isVisible: Boolean) {
+        canLoad = isVisible
         if (isVisible) {
             binding.root.showShimmer(true)
         } else {
@@ -44,9 +47,11 @@ class PeriodChargeCardFragment(
     }
 
     private fun setupPeriodSummary(periodSummary: PeriodChargeModel?) {
-        periodSummary?.let {
-            binding.tvTotal.text = it.total.toString().plus(" ${it.measureType}")
-            binding.tvAverage.text = it.average.twoDecimalPlaces().plus(" ${it.measureType}")
+        if(canLoad) {
+            periodSummary?.let {
+                binding.tvTotal.text = it.total.toString().plus(" ${it.measureType}")
+                binding.tvAverage.text = it.average.twoDecimalPlaces().plus(" ${it.measureType}")
+            }
         }
     }
 }

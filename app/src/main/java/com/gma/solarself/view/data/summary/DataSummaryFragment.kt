@@ -19,12 +19,14 @@ class DataSummaryFragment(
     }
 
     private fun setupSummaryComponents() {
-        view?.post {
-            childFragmentManager.beginTransaction()
-                .replace(binding.periodChargeCard.id, PeriodChargeCardFragment(stationId))
-                .replace(binding.monthlyChargeCard.id, MonthlyChargeCardFragment(stationId))
-                .replace(binding.realTimeCard.id, RealTimeChargeCardFragment(stationId))
-                .commit()
+        childFragmentManager.apply {
+            if (fragments.isEmpty()) {
+                beginTransaction()
+                    .add(binding.periodChargeCard.id, PeriodChargeCardFragment(stationId))
+                    .add(binding.monthlyChargeCard.id, MonthlyChargeCardFragment(stationId))
+                    .add(binding.realTimeCard.id, RealTimeChargeCardFragment(stationId))
+                    .commit()
+            }
         }
     }
 }

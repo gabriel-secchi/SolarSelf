@@ -9,4 +9,5 @@ abstract class SolarDataViewModel : ExtendViewModel, ViewModel() {
 
     abstract fun setupMonitoredStation()
     abstract fun showToolbarConfigButton()
+    abstract fun updateScreen(stationId: String? = null)
 }

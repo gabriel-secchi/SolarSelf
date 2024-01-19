@@ -7,6 +7,7 @@ import com.gma.infrastructure.model.StationMonthDataModel
 import com.gma.infrastructure.useCase.ConfigDatePeriodUseCase
 import com.gma.infrastructure.useCase.StationMonthUseCase
 import com.gma.solarself.customExceptions.NoPeriodConfigured
+import com.gma.solarself.model.ChartDataModel
 import com.gma.solarself.model.PeriodChargeModel
 import com.gma.solarself.utils.DIFF_DAYS_TO_PERIOD
 import com.gma.solarself.utils.currentDay
@@ -24,13 +25,15 @@ class PeriodChargeViewModelImpl(
     override val loading = MutableLiveData<Boolean>()
     override val noPeriodConfigured = MutableLiveData<Boolean>()
     override val referencePeriod = MutableLiveData<ConfigDatePeriodModel>()
-    override val periodSummary = MutableLiveData<PeriodChargeModel?>()
+    override val periodCharge = MutableLiveData<PeriodChargeModel?>()
 
     override fun fetchPeriodSummary(stationId: String) {
+        if (loading.value == true)
+            return
+
+        loading.postValue(true)
         viewModelScope.launch {
             try {
-                loading.postValue(true)
-
                 val periodConfig = validateAndGetDatePeriod()
                 referencePeriod.postValue(periodConfig)
 
@@ -59,22 +62,27 @@ class PeriodChargeViewModelImpl(
                 if (data.isNotEmpty()) {
                     val total = data.sumOf { it.energy.toDouble() }
 
-                    periodSummary.postValue(
+                    periodCharge.postValue(
                         PeriodChargeModel(
                             total = total.toInt(),
                             average = total / data.size,
-                            measureType = data.first().energyStr
+                            measureType = data.first().energyStr,
+                            listEnergy = data.map {
+                                ChartDataModel(
+                                    money = it.money,
+                                    energy = it.energy,
+                                    date = it.date
+                                )
+                            }
                         )
                     )
                 } else {
-                    periodSummary.postValue(null)
+                    periodCharge.postValue(null)
                 }
-            }
-            catch (ex: NoPeriodConfigured) {
+            } catch (ex: NoPeriodConfigured) {
                 noPeriodConfigured.postValue(true)
-            }
-            catch (ex: Exception) {
-                periodSummary.postValue(null)
+            } catch (ex: Exception) {
+                periodCharge.postValue(null)
             } finally {
                 loading.postValue(false)
             }
@@ -84,14 +92,16 @@ class PeriodChargeViewModelImpl(
     private suspend fun validateAndGetDatePeriod(): ConfigDatePeriodModel {
         val periodConfig = configDatePeriodUseCase.getConfig() ?: throw NoPeriodConfigured()
 
-        if(periodConfig.autoUpdatePeriod) {
-            if(periodConfig.endDate.time < Date().time) {
+        if (periodConfig.autoUpdatePeriod) {
+            if (periodConfig.endDate.time < Date().time) {
                 //save new period
-                configDatePeriodUseCase.saveConfig(ConfigDatePeriodModel(
-                    startDate = Date(),
-                    endDate = Date().sumDays(DIFF_DAYS_TO_PERIOD),
-                    autoUpdatePeriod = true
-                ))
+                configDatePeriodUseCase.saveConfig(
+                    ConfigDatePeriodModel(
+                        startDate = Date(),
+                        endDate = Date().sumDays(DIFF_DAYS_TO_PERIOD),
+                        autoUpdatePeriod = true
+                    )
+                )
                 return configDatePeriodUseCase.getConfig() ?: throw NoPeriodConfigured()
             }
         }

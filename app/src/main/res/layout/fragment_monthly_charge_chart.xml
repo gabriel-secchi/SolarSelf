@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:shimmer_highlight_color="@color/shimmer_effect"
-    tools:context=".view.data.body.PeriodChargeChartFragment">
+    tools:context=".view.data.body.MonthlyChargeChartFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chart_panel"
