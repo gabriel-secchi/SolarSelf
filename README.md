@@ -26,5 +26,5 @@ Feito isso dento do menu mencionado acima estará disponível para você ativar 
 Feito isso e tendo essas informações em mão o acesso ao monitoramento atravéz do app já está concluido.
 <br><br>
 
-### Screenshot
+### Screenshots 📷
 ![app_login](readme_data/images/app_login.jpeg) ![app_home](readme_data/images/app_home.jpeg) ![app_config](readme_data/images/app_configuracao.jpeg) ![app_widget](readme_data/images/app_widget.jpeg)
