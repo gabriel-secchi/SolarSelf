@@ -17,4 +17,7 @@ Então, para utilizar o App você precisa de 3 informações de acesso à API da
 - Id da API
 - Chave da API
 
-Estas informações ficam disponíveis dentro da sua conta na Solis Cloud, dentro do **Menu** de configurações na aba **Gerenciamento de API**
+Estas informações ficam disponíveis dentro da sua conta na Solis Cloud, dentro do **Menu** de configurações na aba **Gerenciamento de API** <br>
+![solis_cloud_menu](readme_data/images/solis_cloud_menu_gerenciamento.png) <br>
+
+Caso você não tenha acesso a este **menu**, basta abrir uma solicitação de acesso ao menu para o suporte do Solis Cloud em [Solis Cloud Support](https://solis-service.solisinverters.com/pt-BR/support/tickets)
