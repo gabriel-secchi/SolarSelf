@@ -20,4 +20,6 @@ Então, para utilizar o App você precisa de 3 informações de acesso à API da
 Estas informações ficam disponíveis dentro da sua conta na Solis Cloud, dentro do **Menu** de configurações na aba **Gerenciamento de API** <br>
 ![solis_cloud_menu](readme_data/images/solis_cloud_menu_gerenciamento.png) <br>
 
-Caso você não tenha acesso a este **menu**, basta abrir uma solicitação de acesso ao menu para o suporte do Solis Cloud em [Solis Cloud Support](https://solis-service.solisinverters.com/pt-BR/support/tickets)
+Caso você não tenha acesso a este **menu**, basta abrir uma solicitação de acesso ao menu para o suporte do Solis Cloud em [Solis Cloud Support](https://solis-service.solisinverters.com/pt-BR/support/tickets) <br>
+Feito isso dento do menu mencionado acima estará disponível para você ativar a API e ativando ela estará disponível as chaves de acesso para utilização no aplicativo.<br>
+![solis_cloud_api_keys](readme_data/images/solis_cloud_api_keys.png)
