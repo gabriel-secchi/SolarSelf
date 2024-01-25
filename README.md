@@ -28,3 +28,7 @@ Feito isso e tendo essas informações em mão o acesso ao monitoramento atravé
 
 ### Screenshots 📷
 ![app_login](readme_data/images/app_login.jpeg) ![app_home](readme_data/images/app_home.jpeg) ![app_config](readme_data/images/app_configuracao.jpeg) ![app_widget](readme_data/images/app_widget.jpeg)
+<br><br>
+
+## Política de privacidade
+👉🏼 [Política de privacidade](readme_data/PRIVACY_POLICY.md)
