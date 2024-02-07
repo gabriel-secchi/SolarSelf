@@ -6,8 +6,6 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentDataBinding
 import com.gma.solarself.view.PatternFragment
@@ -15,6 +13,7 @@ import com.gma.solarself.view.components.CustomSnackBar
 import com.gma.solarself.view.data.body.DataBodyFragment
 import com.gma.solarself.view.data.summary.DataSummaryFragment
 import com.gma.solarself.viewModel.SolarDataViewModel
+import kotlin.system.exitProcess
 
 class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     FragmentDataBinding::inflate,
@@ -50,7 +49,8 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
                 .make(view, R.string.data_screen_close_app)
                 .show()
             setBackPressedCallback {
-                requireActivity().finish()
+                requireActivity().finishAffinity()
+                exitProcess(0)
             }
             Handler(Looper.getMainLooper()).postDelayed({
                 setupBackPressedButton()

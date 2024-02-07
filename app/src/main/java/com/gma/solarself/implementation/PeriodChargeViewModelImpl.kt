@@ -81,12 +81,8 @@ class PeriodChargeViewModelImpl(
                     periodCharge.postValue(null)
                 }
             } catch (ex: NoPeriodConfigured) {
-                val  qqq = ex.message
-                ex.printStackTrace()
                 noPeriodConfigured.postValue(true)
             } catch (ex: Exception) {
-                val mess = ex.message
-                ex.printStackTrace()
                 periodCharge.postValue(null)
             } finally {
                 loading.postValue(false)
