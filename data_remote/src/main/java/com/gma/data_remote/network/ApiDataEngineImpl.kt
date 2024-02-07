@@ -14,6 +14,6 @@ class ApiDataEngineImpl: ApiDataEngine {
             return it
         }
 
-        throw Exception("") //TODO: Validate and show error
+        throw Exception("erro aqui na API data engine") //TODO: Validate and show error
     }
 }

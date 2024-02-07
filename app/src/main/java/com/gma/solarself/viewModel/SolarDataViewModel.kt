@@ -6,6 +6,7 @@ import com.gma.infrastructure.model.UserStationModel
 
 abstract class SolarDataViewModel : ExtendViewModel, ViewModel() {
     abstract val monitoredStationId: LiveData<String?>
+    abstract val error: LiveData<String>
 
     abstract fun setupMonitoredStation()
     abstract fun showToolbarConfigButton()

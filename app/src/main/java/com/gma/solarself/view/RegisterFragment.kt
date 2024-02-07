@@ -1,5 +1,6 @@
 package com.gma.solarself.view
 
+import android.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentRegisterBinding
@@ -21,17 +22,34 @@ class RegisterFragment : PatternFragment<FragmentRegisterBinding, RegisterViewMo
         viewModel.loading.observe(requireActivity(), ::displayLoading)
         viewModel.inputsConfig.observe(requireActivity(), ::setupFields)
         viewModel.successDataSaved.observe(requireActivity(), ::goToStationFragment)
+        viewModel.errorMessage.observe(requireActivity(), ::displayError)
     }
 
     private fun setupSaveButton() {
-        binding.buttonFirst.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             try {
                 registerValidation()
                 saveFormData()
             } catch (ex: Exception) {
                 ex.printStackTrace()
+                displayError(ex.message ?: "no message")
             }
         }
+    }
+
+    private fun displayError(errorMessage: String, title: String = "Error", onSuccess: (() -> Unit)? = null) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(title)
+            .setMessage(errorMessage)
+            .setCancelable(false)
+            .setPositiveButton(R.string.ok) { dialog, _ ->
+                dialog.dismiss()
+                onSuccess?.let { function ->
+                    function.invoke()
+                }
+            }
+            .create()
+            .show()
     }
 
     private fun saveFormData() {
@@ -58,7 +76,7 @@ class RegisterFragment : PatternFragment<FragmentRegisterBinding, RegisterViewMo
         formIsValid = binding.keySecretInput.isValid && formIsValid
 
         if (!formIsValid)
-            throw Exception("")
+            throw Exception("For is invalid")
     }
 
     private fun goToStationFragment(saveSuccess: Boolean) {

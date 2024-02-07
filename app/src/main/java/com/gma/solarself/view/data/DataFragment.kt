@@ -1,5 +1,6 @@
 package com.gma.solarself.view.data
 
+import android.app.AlertDialog
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -28,6 +29,7 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
     override fun setupObservers() {
         viewModel.loading.observe(requireActivity(), ::displayLoading)
         viewModel.monitoredStationId.observe(requireActivity(), ::setupMonitoredStation)
+        viewModel.error.observe(requireActivity(), ::displayError)
     }
 
     override fun displayLoading(isVisible: Boolean) {
@@ -91,6 +93,20 @@ class DataFragment : PatternFragment<FragmentDataBinding, SolarDataViewModel>(
 
     private fun setVisibilityView(view: View, isVisible: Boolean) {
         view.isVisible = isVisible
+    }
+
+    private fun displayError(errorMessage: String, onSuccess: (() -> Unit)? = null) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Erro Data")
+            .setMessage(errorMessage)
+            .setPositiveButton(R.string.ok) { dialog, _ ->
+                dialog.dismiss()
+                onSuccess?.let { function ->
+                    function.invoke()
+                }
+            }
+            .create()
+            .show()
     }
 
     private companion object {

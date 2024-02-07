@@ -1,5 +1,9 @@
 package com.gma.solarself.view.config
 
+import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import com.gma.infrastructure.model.StationDataPage
@@ -76,6 +80,7 @@ class ConfigMonitoringCardFragment :
                 .show()
             setLastSelectedStation()
         }
+        viewModel.loadStationData()
     }
 
     private fun setupLoadingShimmer(isVisible: Boolean) {

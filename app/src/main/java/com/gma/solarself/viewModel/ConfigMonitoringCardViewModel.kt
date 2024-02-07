@@ -8,7 +8,7 @@ abstract class ConfigMonitoringCardViewModel : ExtendViewModel, ViewModel() {
     abstract val stationIdConfigured: LiveData<String?>
     abstract val stationList: LiveData<List<StationDataPage>>
     abstract val configUpdated: LiveData<Unit>
-    abstract val error: LiveData<Int>
+    abstract val error: LiveData<Any>
 
     abstract fun loadStationData()
     abstract fun saveWidgetConfig(stationId: String?)

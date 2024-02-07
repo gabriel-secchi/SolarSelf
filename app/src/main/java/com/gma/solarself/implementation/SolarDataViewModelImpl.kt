@@ -1,5 +1,6 @@
 package com.gma.solarself.implementation
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.useCase.ConfigStationUseCase
@@ -15,6 +16,7 @@ class SolarDataViewModelImpl(
 ) : SolarDataViewModel() {
     override val loading = MutableLiveData<Boolean>()
     override val monitoredStationId = MutableLiveData<String?>()
+    override val error = MutableLiveData<String>()
 
     override fun setupMonitoredStation() {
         runSafeWithStationId { stationId ->
@@ -50,6 +52,7 @@ class SolarDataViewModelImpl(
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()
+                error.postValue(ex.message ?: "Algum erro aconteceu no Data")
                 monitoredStationId.postValue(null)
                 //TODO: post value error
             } finally {

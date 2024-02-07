@@ -20,7 +20,7 @@
             android:id="@+id/chart_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/period_charge_chart_title"
+            android:text="@string/monthly_charge_chart_title"
             android:textAlignment="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/textSizeStandart"

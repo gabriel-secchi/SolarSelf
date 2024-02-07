@@ -17,11 +17,7 @@ class ConfigMonitoringCardViewModelImpl(
     override val stationList = MutableLiveData<List<StationDataPage>>()
     override val stationIdConfigured = MutableLiveData<String?>()
     override val configUpdated = MutableLiveData<Unit>()
-    override val error = MutableLiveData<Int>()
-
-    init {
-        loadStationData()
-    }
+    override val error = MutableLiveData<Any>()
 
     override fun loadStationData() {
         viewModelScope.launch {
@@ -32,6 +28,7 @@ class ConfigMonitoringCardViewModelImpl(
                 setSelectedStation()
             } catch (ex: Exception) {
                 ex.printStackTrace()
+                error.postValue("Erro ao buscar lista de estações")
             } finally {
                 loading.postValue(false)
             }

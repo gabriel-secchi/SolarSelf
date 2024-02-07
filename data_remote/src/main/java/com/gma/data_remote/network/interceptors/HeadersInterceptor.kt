@@ -23,7 +23,7 @@ internal class HeadersInterceptor(
 ): Interceptor {
 
     private fun buildGmtDateTime(): String {
-        val dateFormat = SimpleDateFormat("E, dd MMM YYYY HH:mm:ss", Locale.ENGLISH)
+        val dateFormat = SimpleDateFormat("E, dd MMM YYYY HH:mm:ss", Locale.US)
         dateFormat.timeZone = TimeZone.getTimeZone("UTC")
         val date = Date()
         return dateFormat.format(date).plus(" GMT")

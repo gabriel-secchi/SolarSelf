@@ -1,5 +1,6 @@
 package com.gma.solarself.implementation
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.model.ApiDataAccessModel
@@ -16,6 +17,7 @@ class RegisterViewModelImpl(
     override val loading = MutableLiveData<Boolean>()
     override val inputsConfig = MutableLiveData<DataAccessInputConfig>()
     override val successDataSaved = MutableLiveData<Boolean>()
+    override val errorMessage = MutableLiveData<String>()
 
     init {
         getConfigInputs()
@@ -39,10 +41,12 @@ class RegisterViewModelImpl(
                         keySecret = data.keySecret
                     )
                 )
+
                 successDataSaved.postValue(validConnection)
+                if(!validConnection)
+                    throw Exception("Não foi possível validar a conexão, tente novamente mais tarde")
             } catch (ex: Exception) {
-                //TODO:  implements show error
-                successDataSaved.postValue(false)
+                errorMessage.postValue(ex.message)
             } finally {
                 setLoading(false)
             }

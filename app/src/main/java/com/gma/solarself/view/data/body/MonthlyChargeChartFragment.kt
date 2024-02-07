@@ -43,11 +43,11 @@ class MonthlyChargeChartFragment(
     }
 
     private fun setupReferenceDateText(referenceDate: Date) {
-        /*val title = String.format(
-            getString(R.string.period_charge_chart_title),
-            initialDate, finalDate
-        )*/
-        binding.chartTitle.text = referenceDate.currenMonthAndYear()
+        val title = String.format(
+            getString(R.string.monthly_charge_chart_title),
+            referenceDate.currenMonthAndYear()
+        )
+        binding.chartTitle.text = title
     }
 
     private fun setupMonthlyChart(chartModel: MonthlyChargeModel?) {

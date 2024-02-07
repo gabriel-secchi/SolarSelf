@@ -25,7 +25,14 @@ class UserStationDataSourceImpl(
         )
 
         return when(response) {
-            is NetworkResult.Success -> response.data
+            is NetworkResult.Success -> {
+                response.data.let {
+                    if(it.success == true)
+                        return it
+                    else
+                        throw Exception(it.error ?: it.message ?: "Falha na API stationList")
+                }
+            }
             is NetworkResult.Error -> throw response.exception
         }
     }

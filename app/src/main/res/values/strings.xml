@@ -59,8 +59,9 @@
     <string name="average_charge">Média:</string>
     <string name="kwh">Kwh</string>
 
-    <!-- Monthly charge card -->
+    <!-- Monthly charge -->
     <string name="monthly_charge">Mensal</string>
+    <string name="monthly_charge_chart_title">Detalhes do mês %s</string>
 
     <!-- Period charge -->
     <string name="period_charge">Período</string>
