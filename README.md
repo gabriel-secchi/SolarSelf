@@ -7,6 +7,8 @@ Atualmente está disponível os seguintes dados
 - Widget com dados de carga em tempo real;
 - Card e grágico de barra com a carga mensal, podendo selecionar o mês de referência;
 - Card e gráfico de barra com a carga por período, podendo selecionar o período desejado para visualização dos dados.
+
+Acessar app na loja aqui 👉🏼 **[Solar Self](https://play.google.com/store/apps/details?id=com.gma.solarself&pcampaignid=web_share)**.
 <br><br>
 
 ### Como Usar 👉🏼📱
