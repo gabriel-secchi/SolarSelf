@@ -8,7 +8,10 @@ ext {
     app = defaultDependencies + [
             [configuration: "implementation", dependency: "$facebook_shimmer"],
             [configuration: "implementation", dependency: "$swipe_refresh"],
-            [configuration: "implementation", dependency: "$aa_charts"]
+            [configuration: "implementation", dependency: "$aa_charts"],
+            [configuration: "implementation", dependency: "$firebase_bom", isPlatform: true],
+            [configuration: "implementation", dependency: "$firebase_crashlytics"],
+            [configuration: "implementation", dependency: "$firebase_analytics"]
     ]
     infrastructure = defaultDependencies
     widget = defaultDependencies

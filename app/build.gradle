@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -57,7 +59,10 @@ dependencies {
     implementation project(':infrastructure')
     implementation project(':widget')
     app.each {
-        add(it.configuration, it.dependency)
+        if(it.isPlatform)
+            implementation platform(it.dependency)
+        else
+            add(it.configuration, it.dependency)
     }
 
     implementation 'androidx.core:core-ktx:1.10.1'
