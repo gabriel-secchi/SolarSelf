@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(), AppOpener {
         setupNavController()
         setupView()
         setupObservers()
+        viewmodel.validateRegistration()
     }
 
     override fun onSupportNavigateUp(): Boolean {

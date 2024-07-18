@@ -7,4 +7,6 @@ import com.gma.solarself.useCase.ConfigToolbarUseCase
 abstract class SolarSelfViewModel: ViewModel(), ConfigToolbarUseCase {
     abstract val openData: LiveData<Boolean>
     abstract val displayToolbarConfigButton: LiveData<Boolean>
+
+    abstract fun validateRegistration()
 }

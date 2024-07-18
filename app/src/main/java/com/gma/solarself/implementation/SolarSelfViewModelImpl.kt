@@ -14,11 +14,7 @@ class SolarSelfViewModelImpl(
     override val openData = MutableLiveData<Boolean>()
     override val displayToolbarConfigButton = MutableLiveData<Boolean>()
 
-    init {
-        alreadyRegistred()
-    }
-
-    private fun alreadyRegistred() {
+    override fun validateRegistration() {
         viewModelScope.launch {
             val dataAccess = apiDataAccessUseCase.get()
             openData.postValue(dataAccess != null)
