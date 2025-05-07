@@ -1,7 +1,9 @@
 package com.gma.solarself.application
 
 import android.content.Context
+import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.gma.widget.WidgetUpdateWorker

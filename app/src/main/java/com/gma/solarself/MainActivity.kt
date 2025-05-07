@@ -3,10 +3,6 @@ package com.gma.solarself
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
@@ -17,8 +13,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.gma.infrastructure.useCase.AppOpener
 import com.gma.solarself.databinding.ActivityMainBinding
+import com.gma.solarself.utils.safeNavigationTo
+import com.gma.solarself.utils.setSafeOnClickListener
 import com.gma.solarself.viewModel.SolarSelfViewModel
-import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), AppOpener {
@@ -55,18 +52,19 @@ class MainActivity : AppCompatActivity(), AppOpener {
     }
 
     private fun setupView() {
-        binding.configButton.setOnClickListener {
-            navController.navigate(R.id.action_Data_To_Config)
+        binding.configButton.setSafeOnClickListener {
+            navController.safeNavigationTo(R.id.action_Data_To_Config)
         }
     }
 
     private fun setupObservers() {
-        viewmodel.openData.observe(this){ registred ->
+        viewmodel.openData.observe(this) { registred ->
             var action = R.id.action_Splash_To_Register
-            if(registred)
+            if (registred)
                 action = R.id.action_Splash_To_Data
 
-            navController.navigate(action)
+
+            navController.safeNavigationTo(action)
         }
 
         viewmodel.displayToolbarConfigButton.observe(this) { isVisible ->
@@ -77,11 +75,11 @@ class MainActivity : AppCompatActivity(), AppOpener {
     override fun openApp(context: Context?) {
         context?.let { ctx ->
             try {
-                val openAppIntent = ctx.packageManager?.getLaunchIntentForPackage("com.gma.solarself")
+                val openAppIntent =
+                    ctx.packageManager?.getLaunchIntentForPackage("com.gma.solarself")
                 openAppIntent?.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 ctx.startActivity(openAppIntent)
-            }
-            catch (ex: Exception) {
+            } catch (ex: Exception) {
                 ex.printStackTrace()
             }
         }

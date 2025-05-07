@@ -5,6 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.gma.solarself.R
 import com.gma.solarself.databinding.FragmentRegisterBinding
 import com.gma.solarself.model.DataAccessInputConfig
+import com.gma.solarself.utils.safeNavigationTo
 import com.gma.solarself.viewModel.RegisterViewModel
 
 class RegisterFragment : PatternFragment<FragmentRegisterBinding, RegisterViewModel>(
@@ -81,6 +82,6 @@ class RegisterFragment : PatternFragment<FragmentRegisterBinding, RegisterViewMo
 
     private fun goToStationFragment(saveSuccess: Boolean) {
         if (saveSuccess)
-            findNavController().navigate(R.id.action_Register_To_Data)
+            findNavController().safeNavigationTo(R.id.action_Register_To_Data)
     }
 }

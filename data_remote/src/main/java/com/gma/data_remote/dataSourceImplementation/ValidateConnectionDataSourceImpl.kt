@@ -26,7 +26,7 @@ class ValidateConnectionDataSourceImpl(
 
         return when (response) {
             is NetworkResult.Success -> {
-                if(response.data.success == true && response.data.stationData != null)
+                if(response.data.success == true && response.data.data != null)
                     true
                 else
                     throw Exception(response.data.error ?: "Falha na validação da API")

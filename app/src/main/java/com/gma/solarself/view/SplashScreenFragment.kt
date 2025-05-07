@@ -25,7 +25,7 @@ class SplashScreenFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loading.root.isVisible= true
+        binding.loading.root.isVisible = true
     }
 
     override fun onResume() {

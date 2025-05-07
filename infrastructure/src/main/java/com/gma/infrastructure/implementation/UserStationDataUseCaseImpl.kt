@@ -18,7 +18,7 @@ class UserStationDataUseCaseImpl(
             )
         )
 
-        val records = result.stationData?.page?.records?.toStationDataPage()
+        val records = result.data?.page?.records?.toStationDataPage()
         return records ?: listOf()
     }
 
