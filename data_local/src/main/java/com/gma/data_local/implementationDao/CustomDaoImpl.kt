@@ -11,17 +11,17 @@ abstract class CustomDaoImpl<T : RealmObject>(
     private val kclass: KClass<T>,
 ) {
 
-    protected fun add(_object: T) {
+    protected fun add(daoObject: T) {
         database.writeBlocking {
-            copyToRealm(_object)
+            copyToRealm(daoObject)
         }
     }
 
-    protected fun update(_object: T, writeUpdateObject: (T) -> Unit) {
+    /*protected fun update(_object: T, writeUpdateObject: (T) -> Unit) {
         database.writeBlocking {
             writeUpdateObject(_object)
         }
-    }
+    }*/
 
     private fun customFind(
         key: String? = null,
@@ -58,9 +58,9 @@ abstract class CustomDaoImpl<T : RealmObject>(
         }
     }
 
-    protected fun delete(_object: T) {
+    protected fun delete(daoObject: T) {
         database.writeBlocking {
-            findLatest(_object)?.also {
+            findLatest(daoObject)?.also {
                 delete(it)
             }
         }

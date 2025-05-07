@@ -28,7 +28,7 @@ class UserStationDataSourceImpl(
             is NetworkResult.Success -> {
                 response.data.let {
                     if(it.success == true)
-                        return it
+                        it
                     else
                         throw Exception(it.error ?: it.message ?: "Falha na API stationList")
                 }

@@ -20,6 +20,7 @@ class SolarSelfApplication : Application() {
                 widgetModule
             )
         }
+        WidgetWorkers(this).scheduleWidgetWorker()
     }
 
     companion object {

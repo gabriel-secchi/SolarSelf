@@ -207,5 +207,15 @@ class SolarSelfWidget : AppWidgetProvider() {
         private const val HOUR_MASK = "HH:mm"
         private const val ACTION_CLICK_UPDATE_DATA = "actionClickUpdateData"
         private const val ACTION_OPEN_APP = "actionOpenApp"
+
+        fun updateWidget(context: Context) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val widgetComponent = ComponentName(context, SolarSelfWidget::class.java)
+            val widgetIds = appWidgetManager.getAppWidgetIds(widgetComponent)
+            widgetIds.forEach { id ->
+                val views = RemoteViews(context.packageName, R.layout.solar_self_widget)
+                appWidgetManager.updateAppWidget(id, views)
+            }
+        }
     }
 }

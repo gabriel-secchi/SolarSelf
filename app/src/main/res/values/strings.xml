@@ -9,7 +9,7 @@
     <string name="config_fragment_label">Configuração</string>
 
     <!-- Actions -->
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="previous">Previous</string>
     <string name="cancel">Cancelar</string>
     <string name="select">Selecionar</string>
@@ -65,7 +65,7 @@
 
     <!-- Period charge -->
     <string name="period_charge">Período</string>
-    <string name="period_charge_chart_title">Detalhes do período de %s à %s</string>
+    <string name="period_charge_chart_title" formatted="false">Detalhes do período de %s à %s</string>
     <string name="period_charge_chart_tooltip">Gerado: &lt;b&gt;{point.y} Kwh&lt;/b&gt;</string>
 
     <!-- Realtime charge card -->
