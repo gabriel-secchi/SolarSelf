@@ -21,7 +21,7 @@ class ConfigPeriodCardViewModelImpl(
         loadPerioData()
     }
 
-    private fun loadPerioData() {
+    fun loadPerioData() {
         viewModelScope.launch {
             loading.postValue(true)
             try {
