@@ -14,11 +14,9 @@ fun <T> LiveData<T>.getOrAwaitValue(): T? {
             latch.countDown()
             this@getOrAwaitValue.removeObserver(this)
         }
-
     }
 
     this.observeForever(observer)
-
     if (!latch.await(2, TimeUnit.SECONDS)) {
         data = null
     }

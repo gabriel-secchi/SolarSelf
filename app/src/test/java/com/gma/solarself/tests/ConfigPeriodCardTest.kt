@@ -64,7 +64,6 @@ class ConfigPeriodCardTest {
     }
 
 
-
     @Test
     fun `save period success`() = runTest(testDispatcher) {
         // Config
