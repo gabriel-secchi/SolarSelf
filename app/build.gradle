@@ -22,14 +22,15 @@ android {
     signingConfigs {
         release {
             def keyFile = file("../key/project.keystoreProperties")
+            if(keyFile.exists()) {
+                def keystoreProperties = new Properties()
+                keystoreProperties.load(new FileInputStream(keyFile))
 
-            def keystoreProperties = new Properties()
-            keystoreProperties.load(new FileInputStream(keyFile))
-
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
         }
     }
 
