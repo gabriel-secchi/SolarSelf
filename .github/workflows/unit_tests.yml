@@ -43,7 +43,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: |
-            app/build/reposts/kover/reportDebug.xml
+            app/build/reports/kover/reportDebug.xml
           flags: unittests
           name: codecov-kover-report
           fail_ci_if_error: true
