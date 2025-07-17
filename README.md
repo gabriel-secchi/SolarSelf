@@ -1,3 +1,7 @@
+![Platform](https://img.shields.io/badge/platform-Android-green) 
+[![Tests](https://github.com/gabriel-secchi/SolarSelf/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/gabriel-secchi/SolarSelf/actions) 
+[![codecov](https://codecov.io/github/gabriel-secchi/SolarSelf/graph/badge.svg?token=I1IJIHBMBY)](https://codecov.io/github/gabriel-secchi/SolarSelf)
+
 # Solar Self 🌞
 
 ### Sobre o App 📱
