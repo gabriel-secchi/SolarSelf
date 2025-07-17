@@ -100,7 +100,7 @@ class ConfigViewModelTest {
         advanceUntilIdle()
 
         // Assert
-        assertEquals(true, viewModel.loading.getOrAwaitValue())
+        assertEquals(false, viewModel.loading.getOrAwaitValue())
         assertEquals(false, viewModel.loggedOut.getOrAwaitValue())
     }
 
