@@ -3,7 +3,6 @@ package com.gma.solarself.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.gma.infrastructure.model.ConfigDatePeriodModel
-import com.gma.infrastructure.model.StationDataPage
 import java.util.Date
 
 abstract class ConfigPeriodCardViewModel : ExtendViewModel, ViewModel() {

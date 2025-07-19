@@ -1,4 +1,4 @@
-package com.gma.solarself.tests
+package com.gma.solarself.tests.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gma.infrastructure.useCase.ConfigStationUseCase
@@ -22,7 +22,6 @@ import org.junit.Rule
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
-
 
 @ExperimentalCoroutinesApi
 class ConfigMonitoringCardTest {

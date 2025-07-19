@@ -1,4 +1,4 @@
-package com.gma.solarself.tests
+package com.gma.solarself.tests.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gma.infrastructure.useCase.ConfigDatePeriodUseCase
@@ -23,7 +23,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-
 
 @ExperimentalCoroutinesApi
 class ConfigPeriodCardTest {
