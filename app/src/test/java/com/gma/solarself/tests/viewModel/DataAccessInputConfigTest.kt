@@ -1,11 +1,14 @@
 package com.gma.solarself.tests.viewModel
 
+import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gma.solarself.implementation.DataAccessInputConfigUseCaseImpl
 import com.gma.solarself.inputValidators.InvalidInputException
 import com.gma.solarself.objects.invalidUrl
 import com.gma.solarself.objects.vaildHttpUrl
 import com.gma.solarself.objects.vaildHttpsUrl
+import io.mockk.every
+import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -16,8 +19,10 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 @ExperimentalCoroutinesApi
 class DataAccessInputConfigTest {
@@ -40,7 +45,7 @@ class DataAccessInputConfigTest {
     }
 
     @Test
-    fun `get input config validate url input`() = runTest(testDispatcher) {
+    fun `get input config validate url input`() {
         // Run
         val inputConfig = viewModel.getInputConfig()
 
@@ -51,7 +56,7 @@ class DataAccessInputConfigTest {
     }
 
     @Test
-    fun `url input config is valid url`() = runTest(testDispatcher) {
+    fun `url input config is valid url`() {
         // Run
         val inputConfig = viewModel.getInputConfig()
 
@@ -69,8 +74,29 @@ class DataAccessInputConfigTest {
         inputConfig.urlInput.validators?.first()?.validate(invalidUrl)
     }
 
+    @Test()
+    fun `url input config is invalid test error message`() {
+        // Config
+        val fakeMessage = "message"
+        val contextMock = mockk<Context>()
+        every { contextMock.getString(any()) } returns fakeMessage
+
+        // Run
+        val inputConfig = viewModel.getInputConfig()
+
+        // Assert
+        try {
+            inputConfig.urlInput.validators?.first()?.validate(invalidUrl)
+            fail("Deveria ter lançado InvalidInputException")
+        }
+        catch (ex: InvalidInputException) {
+            val reason = ex.getReason(contextMock)
+            assertEquals(fakeMessage, reason)
+        }
+    }
+
     @Test
-    fun `get input config validate KeyId input`() = runTest(testDispatcher) {
+    fun `get input config validate KeyId input`() {
         // Run
         val inputConfig = viewModel.getInputConfig()
 
@@ -82,7 +108,7 @@ class DataAccessInputConfigTest {
     }
 
     @Test
-    fun `get input config validate keySecret input`() = runTest(testDispatcher) {
+    fun `get input config validate keySecret input`() {
         // Run
         val inputConfig = viewModel.getInputConfig()
 
