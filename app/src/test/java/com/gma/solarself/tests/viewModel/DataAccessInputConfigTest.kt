@@ -2,6 +2,10 @@ package com.gma.solarself.tests.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gma.solarself.implementation.DataAccessInputConfigUseCaseImpl
+import com.gma.solarself.inputValidators.InvalidInputException
+import com.gma.solarself.objects.invalidUrl
+import com.gma.solarself.objects.vaildHttpUrl
+import com.gma.solarself.objects.vaildHttpsUrl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -44,6 +48,25 @@ class DataAccessInputConfigTest {
         assertTrue(inputConfig.urlInput.required)
         assertTrue(inputConfig.urlInput.validateOnFocusOut)
         assertTrue((inputConfig.urlInput.validators?.size ?:  0) > 0)
+    }
+
+    @Test
+    fun `url input config is valid url`() = runTest(testDispatcher) {
+        // Run
+        val inputConfig = viewModel.getInputConfig()
+
+        // Assert
+        inputConfig.urlInput.validators?.first()?.validate(vaildHttpUrl)
+        inputConfig.urlInput.validators?.first()?.validate(vaildHttpsUrl)
+    }
+
+    @Test(expected = InvalidInputException::class)
+    fun `url input config is invalid`() = runTest(testDispatcher) {
+        // Run
+        val inputConfig = viewModel.getInputConfig()
+
+        // Assert
+        inputConfig.urlInput.validators?.first()?.validate(invalidUrl)
     }
 
     @Test
