@@ -143,4 +143,19 @@ class ConfigMonitoringCardTest {
         assertNull(viewModel.configUpdated.getOrAwaitValue())
         assertEquals(true, viewModel.error.getOrAwaitValue()?.toString()?.isNotEmpty())
     }
+
+    @Test
+    fun `update widget config with error`() = runTest(testDispatcher) {
+        // Config
+        coEvery { configStationUseCaseMock.saveConfig(selectedStationId) } throws RuntimeException("error")
+
+        // Run
+        viewModel.saveWidgetConfig(selectedStationId)
+        advanceUntilIdle()
+
+        // Assert
+        assertEquals(false, viewModel.loading.getOrAwaitValue())
+        assertNull(viewModel.configUpdated.getOrAwaitValue())
+        assertEquals(true, viewModel.error.getOrAwaitValue()?.toString()?.isNotEmpty())
+    }
 }

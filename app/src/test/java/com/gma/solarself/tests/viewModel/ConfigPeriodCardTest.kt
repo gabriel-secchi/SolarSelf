@@ -1,5 +1,6 @@
 package com.gma.solarself.tests.viewModel
 
+import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gma.infrastructure.useCase.ConfigDatePeriodUseCase
 import com.gma.solarself.implementation.ConfigPeriodCardViewModelImpl
@@ -21,6 +22,7 @@ import org.junit.Before
 import org.junit.Rule
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -60,6 +62,20 @@ class ConfigPeriodCardTest {
         // Assert
         assertEquals(false, viewModel.loading.getOrAwaitValue())
         assertEquals(periodConfiguredAutoUpdated, viewModel.periodData.getOrAwaitValue())
+    }
+
+    @Test
+    fun `load period data with error`() = runTest(testDispatcher) {
+        // Config
+        coEvery { configDatePeriodUseCaseMock.getConfig() } throws RuntimeException("error")
+
+        // Run
+        viewModel.loadPerioData()
+        advanceUntilIdle()
+
+        // Assert
+        assertEquals(false, viewModel.loading.getOrAwaitValue())
+        assertNotNull(viewModel.periodData.getOrAwaitValue())
     }
 
 

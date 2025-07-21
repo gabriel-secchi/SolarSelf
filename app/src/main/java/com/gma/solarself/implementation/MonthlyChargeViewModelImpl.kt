@@ -1,6 +1,5 @@
 package com.gma.solarself.implementation
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.gma.infrastructure.useCase.StationMonthUseCase
@@ -63,7 +62,7 @@ class MonthlyChargeViewModelImpl(
                 } else {
                     monthlySummary.postValue(null)
                 }
-            } catch (ex: Exception) {
+            } catch (_: Exception) {
                 monthlySummary.postValue(null)
             }
             finally {

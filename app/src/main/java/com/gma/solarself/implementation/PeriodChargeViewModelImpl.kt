@@ -80,9 +80,9 @@ class PeriodChargeViewModelImpl(
                 } else {
                     periodCharge.postValue(null)
                 }
-            } catch (ex: NoPeriodConfigured) {
+            } catch (_: NoPeriodConfigured) {
                 noPeriodConfigured.postValue(true)
-            } catch (ex: Exception) {
+            } catch (_: Exception) {
                 periodCharge.postValue(null)
             } finally {
                 loading.postValue(false)
