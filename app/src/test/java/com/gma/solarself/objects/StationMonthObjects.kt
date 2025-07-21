@@ -1,6 +1,8 @@
 package com.gma.solarself.objects
 
 import com.gma.infrastructure.model.StationMonthDataModel
+import com.gma.solarself.model.ChartDataModel
+import com.gma.solarself.model.PeriodChargeModel
 import com.gma.solarself.utils.currentMonth
 import com.gma.solarself.utils.currentYear
 import java.util.Calendar
@@ -33,5 +35,23 @@ val stationMonthDataList = listOf(
         energy = 2.3F,
         energyStr = "2,3",
         date = getStationMonthDate()
+    )
+)
+
+val stationPeriodData = PeriodChargeModel(
+    total = 3,
+    average = (3.6F / 2).toDouble(),
+    measureType = "1,3",
+    listEnergy = listOf(
+        ChartDataModel(
+            money = 10.9F,
+            energy = 1.3F,
+            date = getStationMonthDate()
+        ),
+        ChartDataModel(
+            money = 20.9F,
+            energy = 2.3F,
+            date = getStationMonthDate()
+        )
     )
 )

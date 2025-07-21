@@ -1,6 +1,8 @@
 package com.gma.solarself.objects
 
 import com.gma.infrastructure.model.ConfigDatePeriodModel
+import com.gma.solarself.utils.currentMonth
+import com.gma.solarself.utils.currentYear
 import java.util.Calendar
 import java.util.Date
 
@@ -23,3 +25,7 @@ val periodConfiguredAutoUpdated = ConfigDatePeriodModel(
 val periodConfigured = periodConfiguredAutoUpdated.copy(
     autoUpdatePeriod = false
 )
+
+fun getYearAndMonth(referenceDate: Date): String {
+    return "${referenceDate.currentYear()}-${referenceDate.currentMonth()}"
+}
